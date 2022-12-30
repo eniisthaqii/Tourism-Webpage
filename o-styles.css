@@ -1,0 +1,53 @@
+*
+{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body
+{
+    background-image: url(background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    backdrop-filter: blur(20px);
+}
+
+.title
+{
+    text-align: center;
+    margin: 50px 100px;
+    min-height: 100vh; /* minimum height = screen height */
+    align-items: center;
+    vertical-align: middle;
+}
+
+img
+{
+    height: 340px;
+    width:250px;
+    box-shadow: 5px 10px 30px rgb(85 85 85 /20%);
+    border-radius: 10px;
+}
+
+.offers-container1
+{
+    display: flex;
+    margin: auto;
+    width: 900px;
+}
+
+.offers-container2
+{
+    display: flex;
+    margin: auto;
+    width: 900px;
+}
+
+.box-offer 
+{
+    height: 540px;
+    width: 450px;
+}
