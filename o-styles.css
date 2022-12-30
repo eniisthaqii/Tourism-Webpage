@@ -6,22 +6,21 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body
+section
 {
     background-image: url(background.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    backdrop-filter: blur(20px);
+    background-attachment:fixed;
+    background-size:cover;
+    background-position:center;
+    position:relative;
+    backdrop-filter: 8px;
+    height: 100%;
+    width: 100%; 
 }
 
 .title
 {
     text-align: center;
-    margin: 50px 100px;
-    min-height: 100vh; /* minimum height = screen height */
-    align-items: center;
-    vertical-align: middle;
 }
 
 img
@@ -50,4 +49,6 @@ img
 {
     height: 540px;
     width: 450px;
+    margin: 45px;
+    background-color: #f0ffff7a;
 }
