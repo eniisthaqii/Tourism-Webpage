@@ -4,6 +4,9 @@
     margin:0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    list-style: none;
+    scroll-behavior: smooth;
 }
 
 header{
@@ -16,7 +19,7 @@ header{
     align-items: center;
     justify-content: space-around;
     background: transparent;
-    padding: 20px;
+    padding: 14px;
     transition: ease-in-out .40s;
     background: linear-gradient(to top, #87CEEB, white);
 }
@@ -25,11 +28,11 @@ header{
     font-weight: 600;
     letter-spacing: 1px;
     color: #221314;
-    text-decoration: none;
+
 }
 .navbar{
     display: flex;
-    list-style: none;
+
 }
 .navbar a{
     color: #221314;
@@ -38,7 +41,7 @@ header{
     padding: 10px 22px;
     border-radius: 4px;
     transition: ease .40s;
-    text-decoration: none;
+
 }
 .navbar a:hover{
     background-color: #fff;
