@@ -71,11 +71,28 @@ header{
     display: none;
 }
 
-section{
-    padding: 80px 18%;
-}
-.home{
-    position: relative;
+
+main{
+    display: flex;  
+    align-items: center;  
     width: 100%;
-    height: 100vh;
+    height: 100%; 
+}
+
+
+#slider{
+    display: flex;  
+    align-items: center;  /* Center the items vertically within the container */
+    width: 100%; /*Width and height per mos me na u zvoglu foto kur tbojm zoomout */
+    height: 100%;
+}
+  
+  
+#img{
+    position: static; /* E ngashme me relative */
+    z-index: 999; /* Give the photo a lower z-index than the header */
+    width: 100%;
+    max-height: 90.5vh;
+
+    object-fit: cover;
 }
