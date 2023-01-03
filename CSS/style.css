@@ -70,7 +70,7 @@ body{
     font-size: 35px;
     z-index: 10001;
     cursor: pointer;
-display: none;
+    display: none;
 }
 #UserLogin-icon{
     color: #221314;
@@ -80,6 +80,15 @@ display: none;
     display: inline;
     
 }
+
+
+
+
+
+.nav-logreg{
+    
+}
+
 
 
 main{
@@ -212,7 +221,7 @@ footer {
     align-items: center;
     position: relative;
     width: 100%;
-    background-color: rgb(177, 202, 222);
+    background-color: #094f8d;
     padding: 20px;
     display: flex;
     justify-content: space-around;
@@ -225,6 +234,7 @@ footer {
     text-decoration: none;
     color: #fff;
     font-size: 18px;
+    font-weight: 600;
 }
 
 .foot1 h3  {
