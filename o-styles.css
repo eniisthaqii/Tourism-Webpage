@@ -9,7 +9,7 @@
     scroll-behavior: smooth;
 }
 
-header{
+.header{
     position: fixed;
     top: 0;
     right: 0;
@@ -18,38 +18,44 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background: transparent;
-    padding: 14px;
-    transition: ease-in-out .40s;
-    background: linear-gradient(to top, #87CEEB, white);
+    background: rgb(240 248 255 / 75%);;
+    padding: 20px;
+    transition: ease-in-out .40s;   
 }
-.logo{
+
+.header .logo
+{
     font-size: 35px;
     font-weight: 600;
     letter-spacing: 1px;
-    color: #221314;
+    color: #094f8d;
+  }
+  
 
-}
-.navbar{
-    display: flex;
+.header .navbar
+  {
+      display: flex;
+      list-style-type: none;
+  }
 
-}
-.navbar a{
-    color: #221314;
+.header .navbar a
+  {
+    color: #094f8d;
     font-size: 17.6px;
     font-weight: 500;
     padding: 10px 22px;
     border-radius: 4px;
     transition: ease .40s;
-
 }
-.navbar a:hover{
+
+.header .navbar a:hover{
     background-color: #fff;
-    color: #221314;
+    color: #094f8d;
     box-shadow: 5px 10px 30px rgb(85 85 85 / 20%);
     border-radius: 9px;
 }
-.navbar a:active {
+
+.header .navbar a:active {
     background-color: #fff;
     color: #221314;
     box-shadow: inset 5px 10px 30px #B0E0E6;
@@ -75,21 +81,22 @@ header{
 .title
 {   
     padding:300px 0;
-    text-align: right;
-    padding-right: 50px;
+    text-align: left;
+    padding-left: 50px;
 }
 
 .title h1
 {
     font-size: 96px;
-    color: aliceblue;
+    color: #094f8d;
 }
 
 .title p
 {
     font-size: 30px;
-    color: aliceblue;
+    color: #094f8d;
 }
+
 
 section
 {
@@ -102,7 +109,6 @@ section
     width: 100%; 
 }
 
-
 img
 {
     height: 340px;
@@ -110,6 +116,7 @@ img
     box-shadow: 5px 10px 30px rgb(85 85 85 /20%);
     border-radius: 20px;
 }
+
 
 #offers-container1
 {
@@ -127,8 +134,38 @@ img
 
 .box-offer 
 {
-    height: 540px;
+    height: 580px;
     width: 450px;
     margin: 45px;
     background-color: #f0ffff7a;
+    position: relative;
+}
+
+button
+{
+    position: absolute;
+    bottom:0;
+    border: 1px;
+    background-color: #094f8d;
+    height: 55px;
+    width: 150px;
+    border-radius: 12px 0;
+    font-size: 20px;
+    cursor: pointer;
+    color:#e8edf2;
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+button:hover
+{
+    background-color:#e8edf2;
+    color:#094f8d;
+}
+
+tag 
+{
+    position: absolute;
+    bottom:0;
+    right:0;
 }
