@@ -84,9 +84,16 @@ img
    text-align: center;
    background-color: rgb(240 248 255 / 75%);
    width: 800px;
-   height: 600px;
+   height: 65vh;
    box-shadow: 30px 30px 20px rgb(0,0,0,0.3);
    color: #094f8d;
+   padding: 10vh;
+   font-size: 20px;
+}
+
+.container h2
+{
+    font-size: 35px;
 }
 
 .slider
