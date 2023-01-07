@@ -4,7 +4,10 @@
 var varguImg = [
     'img/Slider1.jpg',
     'img/Slider2.jpg',
-    'img/Slider3.jpg'
+    'img/Slider3.jpg',
+    'img/Slider4.jpg',
+    'img/Slider5.jpg',
+    'img/Slider6.jpg',
 ];
 
 var index = 0;
