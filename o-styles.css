@@ -227,11 +227,40 @@ input
     color:#094f8d;
 }
 
-#down {
-    margin-top: 100%;
-    padding-bottom: 25%;
-   } 
+.popup
+{
+    width:600px;
+    height: 25vh;
+    background-color: #fff;
+    border-radius: 6px;
+    position: fixed;
+    top:50%;
+    left: 35%;
+    text-align: center;
+    padding: 0 30px 30px;
+    visibility: hidden;
+    box-shadow: 30px 30px 20px rgb(0,0,0,0.3);
+}
 
+.open-popup
+{
+    visibility: visible;
+}
+
+.popup h2
+{
+    padding: 16px;
+}
+
+.popup p
+{
+    padding: 16px;
+}
+
+#close
+{
+    position: static;
+}
 /* Footer -----------------------*/
 
 footer {
