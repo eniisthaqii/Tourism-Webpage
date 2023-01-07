@@ -9,7 +9,8 @@
     scroll-behavior: smooth;
 }
 
-.header{
+.header
+{
     position: fixed;
     top: 0;
     right: 0;
@@ -29,7 +30,7 @@
     font-weight: 600;
     letter-spacing: 1px;
     color: #094f8d;
-  }
+}
   
 
 .header .navbar
@@ -76,7 +77,6 @@
     cursor: pointer;
     display: none;
 }
-
 
 .title
 {   
@@ -141,7 +141,7 @@ img
     position: relative;
 }
 
-button
+.book-button
 {
     position: absolute;
     bottom:0;
@@ -157,7 +157,7 @@ button
     overflow: hidden;
 }
 
-button:hover
+.book-button:hover
 {
     background-color:#e8edf2;
     color:#094f8d;
@@ -170,12 +170,73 @@ tag
     right:0;
 }
 
+.book-form
+{
+    height:60vh;
+    display: block;
+    overflow: none;
+}
+
+.bookform-container
+{
+    margin: 5vh 5vh;
+}
+
+.bookform-container h2
+{
+    text-align: center;
+}
+
+.label 
+{
+    display: block;
+    margin: 15px;
+    padding: 5px;
+    font-size: 20px;
+}
+  
+input
+{
+    width: 100%;
+    height: 5vh;
+    font-size: large;
+    border-top: none;
+    border-left: none;
+    border-right:none ;
+    border-bottom: 2 px solid #094f8d;
+}
+
+.book-ticket
+{
+    border: 1px;
+    background-color: #094f8d;
+    height: 55px;
+    width: 150px;
+    border-radius: 12px 0;
+    font-size: 20px;
+    cursor: pointer;
+    color:#e8edf2;
+    transition: 0.5s;
+    overflow: hidden;
+    position: absolute;
+}
+
+.book-ticket:hover
+{
+    background-color:#e8edf2;
+    color:#094f8d;
+}
+
+#down {
+    margin-top: 100%;
+    padding-bottom: 25%;
+   } 
+
 /* Footer -----------------------*/
 
 footer {
     padding-left: 140px;
     align-items: center;
-    position: relative;
     width: 100%;
     background-color: #094f8d;
     padding: 20px;
@@ -183,6 +244,7 @@ footer {
     justify-content: space-around;
     min-height: 400px;
     height: auto;
+    color:#e8edf2;
 }
 
 .foot1 li a {
@@ -196,7 +258,7 @@ footer {
     font-size: 35px;
     font-weight: 600;
     letter-spacing: 1px;
-    color: #221314;
+    color: #e8edf2;
     margin-bottom: 10px;
 }
 
