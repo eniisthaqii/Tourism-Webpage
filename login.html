@@ -8,6 +8,7 @@
     <title>Travel Website</title>
     <!-- linku i css-->
     <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="login.css">
     <!-- linku i css-->
 
     <!-- linku i ikonave-->
@@ -37,7 +38,7 @@
                 <li><a href="#">Contact us</a></li>
             </ul> 
             <div class="nav-logreg">
-                <a href="login.html"><div class="bx bxs-user" id="UserLogin-icon"></div></a>
+                <a href="Login.html"><div class="bx bxs-user" id="UserLogin-icon"></div></a>
                 <div class="bx bx-menu" id="menu-icon"></div>
             </div>
         </div>
@@ -47,14 +48,17 @@
     <!--Header-->
 
     <!--Home-->
-    <main>
-        <!--Image slider-->
-        <div id="slider">
-            <img src="" id="img" alt="Slider">
+    <div id="loginform">
+        <div id="loginform1">
+            <h1><b>LOGIN</b></h1>
+            <h6>New to OUR PAGE? <a href="register.html"><strong style="color: #094f8d;">Create an account!</strong></a></h6>
+            <input class="empws" id="em1" type="email" placeholder="Enter email"><br>
+            <input class="empws" id="pw1" type="password" placeholder="Enter password"><br>
+            <input  class="empws" id="submiti" type="submit" value="Login" onclick="validoMeRegex()"><br>
         </div>
-        <!--Image slider-->
-    </main>
+    </div>
 
+        <!-- category section starts  -->
 
     <div class="category">
 
@@ -63,14 +67,14 @@
         <div class="box-container">
 
             <div class="box">
-                <img src="img/category-1.jpg" alt="">
+                <img src="category-1.jpg" alt="">
                 <h3>bungee jump</h3>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum, id.</p>
                 <a href="#" class="btn">read more</a>
             </div>
 
             <div class="box">
-                <img src="img/category-2.jpg" alt="">
+                <img src="category-2.jpg" alt="">
                 <h3>zip lines</h3>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum, id.</p>
                 <a href="#" class="btn">read more</a>
@@ -79,7 +83,7 @@
 
 
             <div class="box">
-                <img src="img/category-4.jpg" alt="">
+                <img src="category-4.jpg" alt="">
                 <h3>kayaking</h3>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum, id.</p>
                 <a href="#" class="btn">read more</a>
@@ -96,10 +100,10 @@
         <h2>Where to next?</h2>
         <div class="img-container">
             <ul class="img-list">
-                <li><article class="articles"><a href="#"><img src="img/Venice.jpg" alt="Venice" class="bw"><br><p>Venice</p></a></article></li>
-                <li><article class="articles"><a href="#"><img src="img/Paris-2.jpg" alt="Paris" class="bw"><p>Paris</p></a></article></li>
-                <li><article class="articles"><a href="#"><img src="img/London.jpg" alt="London" class="bw"><p>London</p></a></article></li>
-                <li><article class="articles"><a href="#"><img src="img/Frankfurt.jpg" alt="Frankfurt" class="bw"><p>Frankfurt</p></a></article></li>
+                <li><article class="articles"><a href="#"><img src="Venice.jpg" alt="Venice" class="bw"><br><p>Venice</p></a></article></li>
+                <li><article class="articles"><a href="#"><img src="Paris-2.jpg" alt="Paris" class="bw"><p>Paris</p></a></article></li>
+                <li><article class="articles"><a href="#"><img src="London.jpg" alt="London" class="bw"><p>London</p></a></article></li>
+                <li><article class="articles"><a href="#"><img src="Frankfurt.jpg" alt="Frankfurt" class="bw"><p>Frankfurt</p></a></article></li>
             </ul>
 
         </div>
@@ -153,7 +157,7 @@
     <!--Footer-->
 
     <!-- linku i js-->
-    <script src="JS/script.js"></script>
+    <script src="loginScript.js"></script>
     <!-- linku i js-->
 </body>
 
