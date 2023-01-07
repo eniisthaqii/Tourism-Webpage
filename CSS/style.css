@@ -214,6 +214,66 @@ main{
     filter: grayscale(0%);
 } */
 
+
+/* -------------------------------------- */
+.heading {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    font-size: 48px;
+    color: #10221b;
+
+}
+
+.category .box-container {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (minmax(29rem, 1fr))[auto-fit];
+        grid-template-columns: repeat(auto-fit, minmax(29rem, 1fr));
+    gap: 24px;
+    box-shadow: 0 7px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  .category .box-container .box {
+    text-align: center;
+    padding: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .category .box-container .box img {
+    height: 270px;
+    width: 270px;
+    border-radius: 50%;
+    margin-bottom: 16px;
+  }
+  
+  .category .box-container .box h3 {
+    font-size: 32px;
+    color: #094f8d;
+  }
+  
+  .category .box-container .box p {
+    font-size: 24px;
+    color: #10221b;
+    padding: 16px 0;
+    line-height: 2;
+  }
+
+  .category .box-container .box .btn{
+    font-size: 16px;
+    color: black;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 50px;
+  }
+  .category .box-container .box .btn:hover{
+    background-color: #094f8d;
+    color: #fff;
+  }
+
+
+
+
 /* Footer -----------------------*/
 
 footer {
