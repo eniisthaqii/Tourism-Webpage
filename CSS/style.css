@@ -170,12 +170,12 @@ footer {
     
 }
 
-.foot1 li i{
+.cont{ 
     align-items: center;
     text-decoration: none;
     color: #fff;
     font-size: 18px;
-}
+} 
 
 .foot1 h3  {
     font-size: 35px;
