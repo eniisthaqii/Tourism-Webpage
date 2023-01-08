@@ -120,27 +120,7 @@ main{
 
 /* --------------------------------------------------- */
 
-.container{
-    width: 100%;
-    margin: 0;
 
-}
-
-.container h2{
-    font-size: 35px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    margin: 5%;
-    margin-top: 1%;
-    text-transform: uppercase;
-}
-
-.txt{
-    font-size: 20px;
-    font-weight: 200;
-    text-transform: uppercase;
-    margin: 4% 3% 0 3%;
-}
 #Dest-homelink{
     float: right;
     margin-right: 30px;
@@ -166,54 +146,6 @@ main{
     box-shadow: none;
 }
 
-.img-list {
-    display: flex;
-    flex-wrap: nowrap;
-    margin: 6%;
-    justify-content: space-between;
-}
-  
-.img-list li .articles{
-    flex: 0 0 auto;
-    width: 200px;
-    height: 200px;
-    margin-right: 10px;
-    padding-right: 16px;
-}
-.img-list li p{
-    font-size: 25px;
-    font-weight: 600;
-    text-align: justify;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    color: blue;
-}
-  
-.img-list img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 16px;
-
-}
-.articles:hover{
-    transform: scale(1.1);
-}
-.articles:active{
-    transform: translate(0, 5px);
-}
-.img-list li p:hover{
-    text-decoration: underline;
-}
-
-
-/* .bw {
-    filter: grayscale(100%);
-    transition: filter 0.1s;
-}
-  
-.bw:hover {
-    filter: grayscale(0%);
-} */
 
 /* Footer -----------------------*/
 
@@ -321,8 +253,9 @@ footer {
   /* ----------------------------------- */
 
   .container{
+    
     width: 100%;
-    margin: 0;
+    margin: 0; 
 }
 
 .container h2{
@@ -332,7 +265,6 @@ footer {
     margin: 5%;
     margin-top: 1%;
     text-transform: uppercase;
-    
 }
 
 .txt{
@@ -343,18 +275,22 @@ footer {
 }
 
 .img-list {
-    display: flex;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+    grid-gap: 10px;
     margin: 6%;
     justify-content: space-between;
 }
   
 .img-list li .articles{
     flex: 0 0 auto;
-    width: 200px;
+    width: 275px;
+    max-width: 275px;
     height: 200px;
-    margin-right: 10px;
-    padding-right: 16px;
+    max-height: 200px;
+    margin: 20px;
+    /* margin-right: 10px; */
+    /* padding-right: 16px; */
 }
 .img-list li p{
     font-size: 25px;
@@ -367,9 +303,9 @@ footer {
 .img-list img {
     width: 100%;
     height: 100%;
+    max-height: 200px;
     object-fit: cover;
     border-radius: 16px;
-
 }
 .articles:hover{
     transform: scale(1.1);
@@ -390,3 +326,38 @@ footer {
 .bw:hover {
     filter: grayscale(0%);
 } */
+
+
+/* ------------------------------------------- */
+
+
+
+@media screen and (min-width: 1025px){
+    .category .box-container{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+      gap: 10px;
+    }
+    .header .navbar a{
+      padding: 10px 40px;
+      font-size: 19px;
+    }
+  }
+  
+  @media (max-width: 950px){
+    footer{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .foot1 li a{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    div .articles{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
