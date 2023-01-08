@@ -305,3 +305,45 @@ footer {
 #SOCIALMEDIA #mediat li{
     padding: 8px;
 }
+
+/* ------------------------- */
+
+@media (max-width: 700px){
+    .navbar a{
+      display: none;
+    }
+    #menu-icon{
+      display: inline;
+      position: absolute;
+      right: 5%;
+    }
+    .navbar{
+      position: absolute;
+      top: 100%;
+      right: -100%;
+      width: 240px;
+      height: 270px;
+      border: 1px solid black;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      border-radius: 10px;
+      transition: all .50s ease;
+      background: white;
+    }
+    .navbar a{
+      display: block;
+      margin: 11px 0;
+      padding: 0px 25px;
+      transition: all .50s ease;
+    }
+    .navbar a:hover{
+      transform: translateX(2px);
+    }
+    .navbar a.active{
+        color: #094f8d;
+      }
+    .navbar.open{
+      right: 2%;
+    }
+  }
