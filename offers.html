@@ -132,46 +132,47 @@
             </div>
             
         </div>
-        
-        <div class="book-form" id="down">
-            <div class="bookform-container">
+
+    </section>
+
+    <div class="book-form" id="down">
+        <div class="bookform-container">
+            
+                <h2>Book your tickets!</h2>
+           
+            <form>
+                <label class="label">
+                    <input type="text" placeholder="Your name here"><br>
+                    Name
+                </label>
                 
-                    <h2>Book your tickets!</h2>
-               
-                <form>
-                    <label class="label">
-                        <input type="text" placeholder="Your name here"><br>
-                        Name
-                    </label>
-                    
-                    <label class="label">
-                        <input type="text" placeholder="Your name here"><br>
-                        Last Name
-                    </label>
-                    
-                    <label class="label">
-                        <input type="email" placeholder="Your e-mail here"><br>
-                        E-mail
-                    </label>
-                    
-                    <label class="label">
-                        <input type="number" min="1" max="20" placeholder="Number of tickets"><br>
-                        Select number of tickets
-                    </label>
-                   <button type="submit" class="book-ticket" onclick="openPopup()">Book</button>
-                </form>
-            </div>
+                <label class="label">
+                    <input type="text" placeholder="Your name here"><br>
+                    Last Name
+                </label>
+                
+                <label class="label">
+                    <input type="email" placeholder="Your e-mail here"><br>
+                    E-mail
+                </label>
+                
+                <label class="label">
+                    <input type="number" min="1" max="20" placeholder="Number of tickets"><br>
+                    Select number of tickets
+                </label>
+               <button type="submit" class="book-ticket" onclick="openPopup()">Book</button>
+            </form>
         </div>
+    </div>
 
-        <div class="popup" id="popup">
-            <h2>Tickets Booked!</h2>
-            <p>Thank you for choosing us!</p>
-            <button class="book-ticket" id="close" onclick="closePopup()">Close</button>
-        </div>
+    <div class="popup" id="popup">
+        <h2>Tickets Booked!</h2>
+        <p>Thank you for choosing us!</p>
+        <button class="book-ticket" id="close" onclick="closePopup()">Close</button>
+    </div>
 
-
-        <!--Footer-->
-    <footer>
+     <!--Footer-->
+     <footer>
         <div id="SOCIALMEDIA" class="foot1">
             <div class="socialmedia">
                 <h3>Social Media</h3>
@@ -206,8 +207,6 @@
 
     </footer>
     <!--Footer-->
-
-    </section>
     
     <script>
         let popup= document.getElementById("popup");
