@@ -98,13 +98,12 @@
 }
 
 
-section
+.title
 {
     background-image: url(background.jpg);
     background-attachment:fixed;
     background-size:cover;
     background-position:center;
-    position:absolute;
     height: 100%;
     width: 100%; 
 }
