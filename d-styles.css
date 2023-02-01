@@ -8,13 +8,7 @@
 
 body
 {
-    background-image: url(background.jpg);
-    background-attachment:fixed;
-    background-size:cover;
-    background-position:center;
-    position:absolute;
-    height: 100%;
-    width: 100%; 
+    
 }
 
 
@@ -78,9 +72,20 @@ img
     height: 355px;
 }
 
+main
+{
+    padding: 1px;
+    height: 100vh;
+    width: 100%; 
+    background-image: url(background.jpg);
+    background-attachment:fixed;
+    background-size:cover;
+    background-position:center;
+}
+
 .container
 {
-   margin: 150px auto;
+   margin: 120px auto;
    text-align: center;
    background-color: rgb(240 248 255 / 75%);
    width: 800px;
