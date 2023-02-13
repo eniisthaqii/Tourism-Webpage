@@ -5,59 +5,64 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Offers</title>
-    <link href="o-styles.css" rel="stylesheet" />
-    <!-- linku i ikonave-->
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <!-- linku i ikonave-->   
-     
+    <link href="o-styles.css" rel="stylesheet" />  
+     <script src="https://kit.fontawesome.com/1817fca7a4.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
 <body>
     <!--Header-->
     <header>
         <div class="header">
             <a href="#" class="logo">Travel</a>
-    
+            
+                <input type="checkbox" id="menu-bar"> 
+                <label for="menu-bar">
+                    Menu<i class="fa-solid fa-bars" ></i>
+                </label>
+            
+            
             <ul class="navbar">
                 <li><a href="home.html">Home</a></li>
                 <li><a href="offers.html">Offers</a></li>
                 <li><a href="destinations.html">Destination</a></li>
                 <li><a href="about-us.html">Contact us</a></li>
             </ul> 
-            <div class="nav-logreg">
-                <div class="bx bxs-user" id="UserLogin-icon"></div>
-                <div class="bx bx-menu" id="menu-icon"></div>
-            </div>
+            
         </div>
     </header>
     <!--Header-->
 
-     <div class="title" id="title">
+        <div class="title" id="title">
 
-            <h1>
-                Choose your <br> offers!
-            </h1>
-
-            <p>
-                Take a look at the best options, choose one<br>and experience a once-in-a-lifetime adventure..
-            </p>
+            <div class="text">
+                <h1>
+                    Choose your <br> offers!
+                </h1>
+    
+                <p>
+                    Take a look at the best options, choose one<br>and experience a once-in-a-lifetime adventure..
+                </p>
+            </div>
+            
         </div>
 
     <section class="offers" id="offers">
 
-        <div class="container" id="offers-container1">
+        <div class="container" id="offers-container">
            
             <div class="box-offer" id="paphos">
                 <img src="offer-images\paphos.jpg">
                 <h3>
                     Paphos, Cyprus
                 </h3> 
+                
                     Head out into the Troodos Mountains and experience sightseeing and a culinary adventure! View the town in a 360 degree view! The cypriots are waiting for you..
                     <br>
                     <a href="#down">
+                        
                         <button class="book-button">Book tickets</button>
                         </a>
-                        <tag>Only 350$</tag>
             </div>
 
             <div class="box-offer" id="paris">
@@ -70,7 +75,6 @@
                     <a href="#down">
                         <button class="book-button">Book tickets</button>
                         </a>
-                        <tag>Only 350$</tag>
             </div>
 
             <div class="box-offer" id="bali">
@@ -84,12 +88,9 @@
                         <a href="#down">
                             <button class="book-button">Book tickets</button>
                             </a>
-                            <tag>Only 350$</tag>
             </div>
 
-        </div>
-
-        <div class="containter" id="offers-container2">
+        
 
             <div class="box-offer" id="costabrava">
                 <img src="offer-images\costabrava.jpg">
@@ -101,7 +102,6 @@
                     <a href="#down">
                     <button class="book-button">Book tickets</button>
                     </a>
-                    <tag>Only 350$</tag>
             </div>
 
             <div class="box-offer" id="edinborough">
@@ -114,7 +114,6 @@
                     <a href="#down">
                         <button class="book-button">Book tickets</button>
                         </a>
-                        <tag>Only 350$</tag>
             
             </div>
 
@@ -128,13 +127,48 @@
                     <a href="#down">
                         <button class="book-button">Book tickets</button>
                         </a>
-                        <tag>Only 350$</tag>
+            </div>
+
+            <div class="box-offer" id="venice">
+                <img src="offer-images\venice.jpg">
+                <h3>
+                    Venice, Italy
+                </h3> 
+                An essential Venice experience on a gondola ride along the Grand Canal and smaller, scenic waterways. Delve into the history and lore of the Jewish Ghetto, Cannaregio, and San Polo districts.
+                    <br>
+                    <a href="#down">
+                        <button class="book-button">Book tickets</button>
+                        </a>
+            </div>
+
+            <div class="box-offer" id="london">
+                <img src="offer-images\london.jpg">
+                <h3>
+                    London, United Kingdom
+                </h3> 
+                From the modern London Eye to the historic Tower of London, tourist attractions in London are a must-see on any London sightseeing trip. Even better, many London landmarks are free to visit.
+                    <br>
+                    <a href="#down">
+                        <button class="book-button">Book tickets</button>
+                        </a>
+            </div>
+
+            <div class="box-offer" id="frankfurt">
+                <img src="offer-images\frankfurt.jpg">
+                <h3>
+                    Frankfurt, Germany
+                </h3> 
+                Do you love castles views, wine and cruising along the vines? Join a wine fuelled experience to the beautiful UNESCO city of Heidelberg and its surrounding wine regions.
+                    <br>
+                    <a href="#down">
+                        <button class="book-button">Book tickets</button>
+                        </a>
             </div>
             
         </div>
 
     </section>
-
+<!--
     <div class="book-form" id="down">
                 <h2>Book your tickets!</h2>
            
@@ -167,7 +201,8 @@
         <p>Thank you for choosing us!</p>
         <button class="book-ticket" id="close" onclick="closePopup()">Close</button>
     </div>
-
+-->
+    
      <!--Footer-->
      <footer>
         <div id="SOCIALMEDIA" class="foot1">
@@ -183,7 +218,7 @@
                 <li><a href="#"><h1><i class='bx bxl-discord' onmouseover="this.style.color='#5865f2'" onmouseout ="this.style.color='white'"></i></h1></a></li>
             </div>
         </div>
-        <div class="foot1">
+        <div class="foot1" id="travel-foot">
             <h3>Travel</h3>
             <ul>
                 <li><a href="home.html">Home</a></li>
@@ -204,6 +239,8 @@
 
     </footer>
     <!--Footer-->
+    <!--
+
     
     <script>
         let popup= document.getElementById("popup");
@@ -216,6 +253,7 @@
             popup.classList.remove("open-popup");
         }
     </script>
+-->
     <!-- <script src="JS/script.js"></script> -->
 </body>
 </html>

@@ -1,8 +1,12 @@
+html
+{
+    box-sizing: border-box;
+}
 *
 {
     padding:0;
     margin:0;
-    box-sizing: border-box;
+    box-sizing: inherit;
     font-family: 'Poppins', sans-serif;
     text-decoration: none;
     list-style: none;
@@ -19,7 +23,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background: rgb(240 248 255 / 75%);;
+    background: rgb(240 248 255 / 75%);
     padding: 20px;
     transition: ease-in-out .40s;   
 }
@@ -37,6 +41,7 @@
   {
       display: flex;
       list-style-type: none;
+      margin: 20px 0;
   }
 
 .header .navbar a
@@ -63,87 +68,84 @@
     border-radius: 9px;
   }
 
-#menu-icon{
-    color: #221314;
-    font-size: 35px;
-    z-index: 10001;
-    cursor: pointer;
-    display: none;
-}
-#UserLogin-icon{
-    color: #221314;
-    font-size: 35px;
-    z-index: 10001;
-    cursor: pointer;
-    display: none;
-}
-
-
-.title h1
-{
-    font-size: 96px;
-    color: #094f8d;
-}
-
-.title p
-{
-    font-size: 30px;
-    color: #094f8d;
-}
-
-
 .title
 {
-    padding:300px 0;
-    text-align: left;
-    padding-left: 50px;
-    background-image: url(background.jpg);
+    width: 100%;
+    height: 100vh;
+    background-image: url(backgroundimage.jpg);
     background-attachment:fixed;
     background-size:cover;
     background-position:center;
-    height: 100vh;
-    width: 100%; 
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    
 }
 
-img
+.text
 {
-    height: 340px;
-    width:250px;
-    box-shadow: 5px 10px 30px rgb(85 85 85 /20%);
-    border-radius: 20px;
+    padding-left: 50px;
+    position: absolute;
+    top: 50%;
+    font-size: 2em;
+    color: #094f8d;
 }
 
+#menu-bar
+{
+    display: none;
+}
 
-#offers-container1
+.header label
+{
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+    color: #094f8d;
+}
+
+#offers-container img
+{
+    width:100%;
+    max-width: 350px;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.box-offer
+{
+    width: 600px;
+    height: 750px;
+    padding: 40px 70px;
+    border-radius: 10px;
+    box-shadow: 5px 10px 30px rgb(85 85 85 / 20%);
+    text-align: center;
+}
+
+.box-offer h3
+{
+    padding-bottom: 10px;
+}
+
+#offers-container
 {
     display: flex;
-    margin: auto;
-    width: 1000px;
-}
-
-#offers-container2
-{
-    display: flex;
-    margin: auto;
-    width: 1000px;
-}
-
-.box-offer 
-{
-    height: 580px;
-    width: 450px;
-    margin: 45px;
-    background-color: #f0ffff7a;
-    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 70px 10px;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 2rem;
 }
 
 .book-button
 {
-    position: absolute;
-    bottom:0;
     border: 1px;
     background-color: #094f8d;
-    height: 55px;
+    height: 45px;
     width: 150px;
     border-radius: 12px 0;
     font-size: 20px;
@@ -151,7 +153,7 @@ img
     color:#e8edf2;
     transition: 0.5s;
     overflow: hidden;
-    
+    margin-top: 40px;
 }
 
 .book-button:hover
@@ -159,103 +161,6 @@ img
     background-color:#e8edf2;
     color:#094f8d;
 }
-
-tag 
-{
-    position: absolute;
-    bottom:0;
-    right:0;
-}
-
-.book-form
-{
-    height:600px;
-}
-
-.book-form h2
-{
-    text-align: center;
-}
-
-form
-{
-    text-align: center;
-}
-
-.label 
-{
-    display: block;
-    margin: 15px;
-    padding: 5px;
-    font-size: 20px;
-}
-  
-input
-{
-    width: 50%;
-    height: 5vh;
-    font-size: large;
-    border-top: none;
-    border-left: none;
-    border-right:none ;
-    border-bottom: 2 px solid #094f8d;
-    text-align: center;
-}
-
-.book-ticket
-{
-    border: 1px;
-    background-color: #094f8d;
-    height: 55px;
-    width: 150px;
-    border-radius: 12px 0;
-    font-size: 20px;
-    cursor: pointer;
-    color:#e8edf2;
-    transition: 0.5s;
-}
-
-.book-ticket:hover
-{
-    background-color:#e8edf2;
-    color:#094f8d;
-}
-
-.popup
-{
-    width:600px;
-    height: 25vh;
-    background-color: #fff;
-    border-radius: 6px;
-    position: fixed;
-    top:50%;
-    left: 35%;
-    text-align: center;
-    padding: 0 30px 30px;
-    visibility: hidden;
-    box-shadow: 30px 30px 20px rgb(0,0,0,0.3);
-}
-
-.open-popup
-{
-    visibility: visible;
-}
-
-.popup h2
-{
-    padding: 16px;
-}
-
-.popup p
-{
-    padding: 16px;
-}
-
-#close
-{
-    position: static;
-}
-/* Footer -----------------------*/
 
 footer {
     padding-left: 140px;
@@ -300,61 +205,191 @@ footer {
     padding: 8px;
 }
 
-@media (max-width: 375px) 
+
+
+
+
+@media (max-width: 991px)
+{
+    .logo
+    {
+        padding: 4px;
+    }
+    .header
+    {
+        flex-direction: column;
+    }
+
+    .text
+    {
+        font-size: 1.5em;
+        top: 40%;
+    }
+}
+
+@media  (max-width: 535px)
 {
     .header
     {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 100%;
-        z-index: 1000;
-        align-items: center;
-        justify-content: space-around;
-        background: rgb(240 248 255 / 75%);;
-        padding: 20px;
-        transition: ease-in-out .40s;   
+        padding-top: 5px;
+        height: 15vh;
+        display: inline;
+        padding: 35px 35px;
+        justify-content: space-evenly;
     }
-
-    .header .logo
-    {
-        font-size: 35px;
-        font-weight: 600;
-        letter-spacing: 1px;
-        color: #094f8d;
-        margin: 0 100px;
-        padding: 2px;
-    }
-    
 
     .header .navbar
     {
-        display: flex;
-        list-style-type: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        display: block;
+        text-align: center;
+        position: absolute;  
+        top: 100%;
+        width: 50vw;
+        margin: 0 auto; 
+        background-color: rgba(240, 248, 255, 0.83);
+        display: none;
+        border-radius: 0 0 10px 10px;
+        
     }
 
-    .header .navbar a
+    .header .navbar:last-child
     {
-        color: #094f8d;
-        font-size: 17.6px;
-        font-weight: 500;
-        padding: 10px 22px;
-        border-radius: 4px;
-        transition: ease .40s;
+        padding: 0;
+    }
+    
+
+    .header ul li
+    {
+        padding: 10px 0;
+        
     }
 
-    .header .navbar a:hover{
-        background-color: #fff;
-        color: #094f8d;
-        box-shadow: 5px 10px 30px rgb(85 85 85 / 20%);
-        border-radius: 9px;
+    .header label
+    {
+        display: initial;
+        padding-left: 35%;
     }
 
-    .header .navbar a:active {
-        background-color: #fff;
-        color: #221314;
-        box-shadow: inset 5px 10px 30px #B0E0E6;
-        border-radius: 9px;
+    .header label i
+    {
+        padding: 0 10px;
+        
     }
 
+    #menu-bar:checked ~ .navbar
+    {
+        display: initial;
+    }
+
+    .box-offer
+    {
+        height: 90vh;
+    }
+
+   
 }
+
+@media (max-width: 415px)
+{
+
+    .header
+    {
+        flex-direction: column;
+        text-align: center;
+        height: 17vh;
+    }
+
+    .logo
+    {
+       display: block;
+       padding: 0;
+       text-align: center;
+    }
+    .header label
+    {
+        display: initial;
+        padding: 0;
+    } 
+
+    .navbar a
+    {
+        width: 20vw;
+    }
+
+    #menu-bar:checked ~ .navbar
+    {
+        display: initial;
+    }
+
+    .header ul :last-child
+    {
+        word-wrap: break-word;
+    }
+
+    #offers-container img
+    {
+        max-width: 150px;
+        height: 250px;
+    }
+   
+    .box-offer
+    {
+        height: 80vh;
+    }
+    
+}
+
+@media (max-width: 310px) 
+{
+
+    .navbar ul
+    {
+        padding: 0;
+    }
+
+    .header ul :last-child
+    {
+        word-wrap: break-word;
+    }
+
+    #offers-container img
+    {
+       
+        max-width: 50px;
+        height: 150px;
+        
+    }
+
+    .box-offer
+    {
+        height: 70vh;
+    }
+
+    
+    #bali, #machupichu, #edinborough
+    {
+        height: 65vh;
+    }
+
+
+    #costabrava 
+    {
+        height: 60vh;
+    }
+
+    #london
+    {
+        height: 100vh;
+    }
+
+    #venice, #frankfurt
+    {
+        height: 70vh;
+    }
+   
+}
+
+
