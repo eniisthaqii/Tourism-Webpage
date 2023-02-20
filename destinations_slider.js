@@ -1,5 +1,6 @@
 const images = ['cyprus.JPG','paris.jpg','bali.JPG',
-                'costabrava.JPG','edinborough.JPG','machupichu.JPG'];
+                'costabrava.JPG','edinborough.JPG','machupichu.JPG',
+                 'london.jpeg', 'frankfurt.jpeg',  'venice.jpeg'];
 const places= ['Paphos',];
 
 const firstImage=0;
@@ -13,7 +14,7 @@ nextButton.addEventListener('click',()=>{
     currentImage++;
     if (currentImage >= LastImage)
     {
-        currentImage=5;
+        currentImage=8;
     }
     getImage.src=images[currentImage];
     }  
