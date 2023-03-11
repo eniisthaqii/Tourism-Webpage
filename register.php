@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Website</title>
     <!-- linku i css-->
-    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="CSS/register.css">
     <!-- linku i css-->
 
     <!-- linku i ikonave-->
@@ -33,11 +34,11 @@
             <ul class="navbar">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="offers.html">Offers</a></li>
-                <li><a href="destinations.html">Destination</a></li>
-                <li><a href="about-us.html">Contact us</a></li>
+                <li><a href="#">Destination</a></li>
+                <li><a href="#">Contact us</a></li>
             </ul>
             <div class="nav-logreg">
-                <a href="login.html">
+                <a href="Login.html">
                     <div class="bx bxs-user" id="UserLogin-icon"></div>
                 </a>
                 <div class="bx bx-menu" id="menu-icon"></div>
@@ -49,14 +50,24 @@
     <!--Header-->
 
     <!--Home-->
-    <main>
-        <!--Image slider-->
-        <div id="slider">
-            <img src="" id="img" alt="Slider">
+    <div id="loginform">
+        <div id="loginform1">
+            <form action="" method="post">
+                <h1><b>CREATE ACCOUNT</b></h1>
+                <input class="empws" id="firstname3" type="text" placeholder="Full Name" name="fullname"><br>
+                <input class="empws" id="un" type="username" placeholder="Username" name="username"><br>
+                <input class="empws" id="em1" type="email" placeholder="Enter email" name="email"><br>
+                <input class="empws" id="pw1" type="password" placeholder="Enter password" name="password"><br>
+                <input class="empws" id="submiti" type="submit" name="submit" value="CREATE"
+                    onclick="validoMeRegex()"><br /><br />
+                <h6>
+            </form>
+            <a href="login.php"><strong style="color: rgb(250, 0, 0)">Return to Login!</strong></a>
+            </h6>
         </div>
-        <!--Image slider-->
-    </main>
+    </div>
 
+    <!-- category section starts  -->
 
     <div class="category">
 
@@ -94,7 +105,7 @@
 
     <div class="container">
         <p class="txt">Plan your trip</p>
-        <a href="destinations.html" id="Dest-homelink">View all Destinations</a>
+        <a href="#" id="Dest-homelink">View all Destinations</a>
         <h2>Where to next?</h2>
         <div class="img-container">
             <ul class="img-list">
@@ -164,28 +175,25 @@
         <div class="foot1">
             <h3>Travel</h3>
             <ul>
-                <li><a href="home.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="offers.html">Offers</a></li>
                 <li><a href="destinations.html">Destinations</a></li>
-                <li><a href="about-us.html">Contact Us</a></li>
+                <li><a href="about-us.html">About us</a></li>
             </ul>
         </div>
-
+        <div id="offF" class="foot1">
+            <h3>Offers</h3>
+            <li><a href="#">Places</a></li>
+            <li><a href="offers.html">offers</a></li>
+            <li><a href="#">Lifestyle</a></li>
+            <li><a href="#">Help</a></li>
+        </div>
         <div id="Destf" class="foot1">
             <h3>Destinations</h3>
-            <li>Paphos</li>
-            <li>Paris</li>
-            <li>Bali</li>
-            <li>Costa Brava</li>
-            <li>Edinborough</li>
-            <li>Machu Pichu</li>
-        </div>
-        <div id="offF" class="foot1">
-            <h3>Contact Us</h3>
-            <li><i class='bx bx-current-location cont'> 4712 Camp Road, Prishtine, Kosove</i></li>
-            <li><i class='bx bx-phone cont'> 045-666-765</i></li>
-            <li><i class='bx bx-envelope cont'> Turismwebpage@gmail.com</i></li>
-
+            <li><a href="#">Venice</a></li>
+            <li><a href="#">Paris</a></li>
+            <li><a href="#">London</a></li>
+            <li><a href="#">Frankfurt</a></li>
         </div>
 
 
@@ -193,7 +201,7 @@
     <!--Footer-->
 
     <!-- linku i js-->
-    <script src="JS/script.js"></script>
+    <script src="JS/registerscript.js"></script>
     <!-- linku i js-->
 </body>
 

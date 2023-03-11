@@ -23,7 +23,7 @@
 
 
             <ul class="navbar">
-                <li><a href="home.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="offers.html">Offers</a></li>
                 <li><a href="destinations.html">Destination</a></li>
                 <li><a href="about-us.html">Contact us</a></li>
