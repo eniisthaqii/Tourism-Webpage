@@ -1,7 +1,7 @@
-#loginform{
+#loginform {
     margin-top: 92px;
     padding-top: 60px;
-    width: 100%; 
+    width: 100%;
     box-shadow: 0 0 50px 61px rgba(0, 0, 0, 0.1);
     align-items: center;
     height: auto;
@@ -18,11 +18,11 @@
     text-align: center;
 }
 
-#loginform1 #em1{
+#loginform1 #em1 {
     padding-left: 10px;
 }
 
-#loginform1 #pw1{
+#loginform1 #pw1 {
     padding-left: 10px;
 }
 
@@ -38,21 +38,21 @@
     height: 50px;
 }
 
-#loginform1 #em1 ::placeholder  {
+#loginform1 #em1 ::placeholder {
     margin-left: 20px;
 }
 
-#loginform1 #pw1{
+#loginform1 #pw1 {
     padding-left: 10px;
 }
 
-#loginform1 #submiti{
-    background-color:#094f8d;
+#loginform1 #submiti {
+    background-color: #094f8d;
     color: white;
     width: 412px;
     height: 52px;
 }
 
-#loginform1 #submiti:active{
+#loginform1 #submiti:active {
     transform: translateY(-5px);
 }

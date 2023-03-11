@@ -1,112 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Destinations</title>
-    <link href="d-styles.css" rel="stylesheet" />
+    <link href="CSS/style.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <script src="https://kit.fontawesome.com/1817fca7a4.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
-<main>
     <header>
         <div class="header">
             <a href="#" class="logo">Travel</a>
-            
-                <input type="checkbox" id="menu-bar"> 
-                <label for="menu-bar">
-                    Menu<i class="fa-solid fa-bars" style="color: #094f8d"></i>
-                </label>
-            
-            
+
+
             <ul class="navbar">
-                <li><a href="home.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="offers.html">Offers</a></li>
                 <li><a href="destinations.html">Destination</a></li>
                 <li><a href="about-us.html">Contact us</a></li>
-            </ul> 
-            
+            </ul>
+            <div class="nav-logreg">
+                <a href="login.html">
+                    <div class="bx bxs-user" id="UserLogin-icon"></div>
+                </a>
+                <div class="bx bx-menu" id="menu-icon"></div>
+            </div>
         </div>
+
     </header>
+    <main class="maind">
 
-    <div class="container">
-        <div class="slider">
-            <h1>
-                Check out our destinations..
-            </h1>
-       
-                <img src="cyprus.JPG" id="image">  
-       
-            <div class="caption">
-                <button class="button" id="previous">Previous</button>
-                <button class="button" id="next">Next</button>
+        <div class="containerd">
+            <div class="sliderd">
+                <h1 class="h1d">
+                    Check out our destinations..
+                </h1>
+
+                <img src="img/cyprus.JPG" id="image">
+
+                <div class="captiond">
+                    <button class="buttond" id="previous">Previous</button>
+                    <button class="buttond" id="next">Next</button>
+                </div>
+            </div>
+
+            <a href="offers.html">
+                <tag class="tagd">Click here to book your offer!</tag>
+            </a>
+        </div>
+    </main>
+    <!--Footer-->
+    <footer>
+        <div id="SOCIALMEDIA" class="foot1">
+            <div class="socialmedia">
+                <h3>Social Media</h3>
+            </div>
+            <div id="mediat">
+                <li><a href="#">
+                        <h1><i class='bx bxl-instagram'
+                                onmouseover="this.style.background='linear-gradient(to bottom, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)'; this.style.color='transparent'; this.style.WebkitBackgroundClip='text'; "
+                                onmouseout="this.style.color='white'"></i></h1>
+                    </a></li>
+                <li><a href="#">
+                        <h1><i class='bx bxl-youtube' onmouseover="this.style.color='red'"
+                                onmouseout="this.style.color='white'"></i></h1>
+                    </a></li>
+                <li><a href="#">
+                        <h1><i class='bx bxl-twitter' onmouseover="this.style.color='rgb(29, 155, 240)'"
+                                onmouseout="this.style.color='white'"></i></h1>
+                    </a></li>
+                <li><a href="#">
+                        <h1><i class='bx bxl-twitch' onmouseover="this.style.color='#5c16c5'"
+                                onmouseout="this.style.color='white'"></i></h1>
+                    </a></li>
+                <li><a href="#">
+                        <h1><i class='bx bxl-facebook' onmouseover="this.style.color='#385898'"
+                                onmouseout="this.style.color='white'"></i></h1>
+                    </a></li>
+                <li><a href="#">
+                        <h1><i class='bx bxl-discord' onmouseover="this.style.color='#5865f2'"
+                                onmouseout="this.style.color='white'"></i></h1>
+                    </a></li>
             </div>
         </div>
-
-        <a href="offers.html">
-            <tag>Click here to book your offer!</tag>
-        </a>
-    </div>
-</main>
-    <!--footer-->
-    <footer class="footer">
-        <div id="left-div" class="foot">
-            <h3>Social Media</h3>
-            <div class="social-media">
-                    <li><a href="https://www.instagram.com/" target="_blank"><i class='bx bxl-instagram' onmouseover="this.style.background='linear-gradient(to bottom, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)'; this.style.color='transparent'; this.style.WebkitBackgroundClip='text'; " onmouseout ="this.style.color='white'"></i></a></li>
-                    <li><a href="https://www.youtube.com/" target="_blank"><i class='bx bxl-youtube' onmouseover="this.style.color='red'" onmouseout ="this.style.color='white'"></i></h1></a></li>
-                    <li><a href="https://twitter.com/" target="_blank"><i class='bx bxl-twitter' onmouseover="this.style.color='rgb(29, 155, 240)'" onmouseout ="this.style.color='white'"></i></h1></a></li>
-                    <li><a href="https://discord.com/" target="_blank"><i class='bx bxl-twitch' onmouseover="this.style.color='#5c16c5'" onmouseout ="this.style.color='white'"></i></h1></a></li>
-                    <li><a href="https://www.facebook.com/" target="_blank"><i class='bx bxl-facebook' onmouseover="this.style.color='#385898'" onmouseout ="this.style.color='white'"></i></h1></a></li>
-                    <li><a href="https://www.twitch.tv/" target="_blank"><i class='bx bxl-discord' onmouseover="this.style.color='#5865f2'" onmouseout ="this.style.color='white'"></i></h1></a></li>
-            </div>
-        </div>
-        
-    
-        <div class="middle-div" class="foot">
+        <div class="foot1">
             <h3>Travel</h3>
-            <div class="travel-foot">
-                <ul>
-                   <a href="home.html">
-                    <li>Home</li>
-                   </a> 
-                   <a  href="offers.html">
-                    <li>Offers</li>
-                   </a>
-                   <a href="destinations.html">
-                    <li>Destinations</li>
-                   </a>
-                   <a href="about-us.html">
-                    <li>About us</li>
-                   </a>
-                </ul>
-            </div>
-    
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="offers.html">Offers</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="about-us.html">Contact Us</a></li>
+            </ul>
         </div>
-    
-        <div class="foot" id="right-div">
+
+        <div id="Destf" class="foot1">
             <h3>Destinations</h3>
-            <div class="destinations-foot">
-                <ul>
-                  <li>Paphos</li>
-                  <li>Paris</li>
-                  <li>Bali</li>
-                  <li>Costa Brava</li>
-                  <li>Edinborough</li>
-                  <li>Machu Pichu</li>
-                  <li>London</li>
-                  <li>Frankfurt</li>
-                  <li>Venice</li>
-                </ul>
-            </div>
-    
+            <li>Paphos</li>
+            <li>Paris</li>
+            <li>Bali</li>
+            <li>Costa Brava</li>
+            <li>Edinborough</li>
+            <li>Machu Pichu</li>
         </div>
+        <div id="offF" class="foot1">
+            <h3>Contact Us</h3>
+            <li><i class='bx bx-current-location cont'> 4712 Camp Road, Prishtine, Kosove</i></li>
+            <li><i class='bx bx-phone cont'> 045-666-765</i></li>
+            <li><i class='bx bx-envelope cont'> Turismwebpage@gmail.com</i></li>
+
+        </div>
+
+
     </footer>
-        <script src="destinations_slider.js"></script>
+    <!--Footer-->
+
+    <!-- linku i js-->
+    <script src="JS/script.js"></script>
+    <script src="JS/destinations_slider.js"></script>
+    <!-- linku i js-->
+
 </body>
+
 </html>
