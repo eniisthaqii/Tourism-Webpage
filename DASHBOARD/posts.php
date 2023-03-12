@@ -24,13 +24,13 @@
 
 
             <ul class="navbar">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="offers.html">Offers</a></li>
-                <li><a href="destinations.html">Destination</a></li>
-                <li><a href="about-us.html">Contact us</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="offers.php">Offers</a></li>
+                <li><a href="destinations.php">Destination</a></li>
+                <li><a href="about-us.php">Contact us</a></li>
             </ul>
             <div class="nav-logreg">
-                <a href="login.html">
+                <a href="login.php">
                     <div class="bx bxs-user" id="UserLogin-icon"></div>
                 </a>
                 <div class="bx bx-menu" id="menu-icon"></div>
@@ -231,10 +231,10 @@
         <div class="foot1">
             <h3>Travel</h3>
             <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="offers.html">Offers</a></li>
-                <li><a href="destinations.html">Destinations</a></li>
-                <li><a href="about-us.html">Contact Us</a></li>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="offers.php">Offers</a></li>
+                <li><a href="destinations.php">Destinations</a></li>
+                <li><a href="about-us.php">Contact Us</a></li>
             </ul>
         </div>
 

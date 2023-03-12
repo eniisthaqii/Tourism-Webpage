@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+<?php include 'modelcontroller/model.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,13 +33,13 @@
 
 
             <ul class="navbar">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="offers.html">Offers</a></li>
-                <li><a href="destinations.html">Destination</a></li>
-                <li><a href="about-us.html">Contact us</a></li>
+                <li><a href="index.php" class="active">Home</a></li>
+                <li><a href="offers.php">Offers</a></li>
+                <li><a href="destinations.php">Destination</a></li>
+                <li><a href="about-us.php">Contact us</a></li>
             </ul>
             <div class="nav-logreg">
-                <a href="login.html">
+                <a href="login.php">
                     <div class="bx bxs-user" id="UserLogin-icon"></div>
                 </a>
                 <div class="bx bx-menu" id="menu-icon"></div>
@@ -94,7 +96,7 @@
 
     <div class="container">
         <p class="txt">Plan your trip</p>
-        <a href="destinations.html" id="Dest-homelink">View all Destinations</a>
+        <a href="destinations.php" id="Dest-homelink">View all Destinations</a>
         <h2>Where to next?</h2>
         <div class="img-container">
             <ul class="img-list">
@@ -133,6 +135,35 @@
 
     ?>
 
+<script> 
+      <?php 
+        
+        $slidet = $modeli->fetchSlider();
+      ?>
+      //SCRIPTA per IMGslider
+      var varguImg = [];
+      
+      <?php foreach($slidet as $row){?>
+      varguImg.push("DASHBOARD/<?php echo $row['imgpath']; ?>");<?php }?>
+
+        var index = 0;
+        const koha = 5000;
+
+        function krijoSlider() {
+          document.getElementById("imazhi").src = varguImg[index];
+          index++;
+
+          if (index == varguImg.length) {
+            index = 0;
+          }
+
+          setTimeout("krijoSlider()", koha);
+
+          console.log(varguImg.length);
+          console.log("sdsdsd");
+        }
+
+        krijoSlider();</script>
     
     <!-- linku i js-->
     <script src="JS/script.js"></script>

@@ -1,3 +1,9 @@
+<?php session_start(); 
+if (!(isset($_SESSION['role']))) {
+    header('Location: ../logout.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +17,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
-    <link rel="icon" href="img/angry2022logo.png" />
 
     <title>Travel</title>
 </head>
@@ -19,20 +24,24 @@
 <body>
 <header>
         <div class="header">
-            <a href="#" class="logo">Travel</a>
+            <a href="../index.php" class="logo">Travel</a>
 
 
             <ul class="navbar">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="offers.html">Offers</a></li>
-                <li><a href="destinations.html">Destination</a></li>
-                <li><a href="about-us.html">Contact us</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="offers.php">Offers</a></li>
+                <li><a href="destinations.php">Destination</a></li>
+                <li><a href="about-us.php">Contact us</a></li>
             </ul>
             <div class="nav-logreg">
-                <a href="login.html">
+                <a href="login.php">
                     <div class="bx bxs-user" id="UserLogin-icon"></div>
                 </a>
                 <div class="bx bx-menu" id="menu-icon"></div>
+
+                <a href="/logout.php" style="color:black">
+                <i class="bx bx-log-out"></i> Logout
+            </a>
             </div>
         </div>
 
@@ -43,39 +52,46 @@
                 <ul class="nav-menu">
 
                     <li>
-                        <a href="index.php" class="active">
+                        <a href="/DASHBOARD/index.php" class="active">
                             <i class="bx bxs-dashboard"></i> Dashboard
                         </a>
                     </li>
+                     <?php if ($_SESSION['role'] == 2): ?>
                     <li>
                         <a href="users.php">
                             <i class="bx bxs-user"></i> Userat
                         </a>
                     </li>
+                    <?php endif; ?>
                     <li>
                         <a href="posts.php">
                             <i class="bx bxs-file"></i> Postet
                         </a>
                     </li>
-                    <li>
-                        <a href="web_settings.php">
-                            <i class="bx bxs-cog"></i> PageSettings
-                        </a>
-                    </li>
+                    
                     <li>
                         <a href="sliderimages.php">
                             <i class="bx bxs-image-alt"></i> SliderImages
                         </a>
                     </li>
+                    <?php if ($_SESSION['role'] == 2): ?>
                     <li>
-                        <a href="sliderimages2.php">
-                            <i class="bx bxs-image-alt"></i> SliderImages2
+                        <a href="web_settings.php">
+                            <i class="bx bxs-cog"></i> WebSettings
                         </a>
                     </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
+        <?php
+            include '../modelcontroller/model.php';
+            $model = new Model();
+            $rows = $model->counterUserPostTrophySlider();
+        ?>
         <div class="dashboard">
+
+            <h2>Hello,<?php echo $_SESSION['fullname'] ?></h2>
             <div class="row">
                 <div class="col">
                     <div class="card">
@@ -84,7 +100,14 @@
                             <i class='bx bx-user'></i>
                         </div>
                         <div class="card-body">
-                            <h2>50</h2>
+                        
+                        <?php if ($rows): ?>
+                        <h2><?php foreach($rows as $row){ 
+                            echo $row['user_count'];
+                        }?></h2>
+                        <?php else: ?>
+                        <p>No data found.</p>
+                        <?php endif; ?>
                             <a href="users.php" class="btn-view-details">
                                 <i class='bx bx-show'></i>
                                 View Details
@@ -99,7 +122,13 @@
                             <i class='bx bx-file'></i>
                         </div>
                         <div class="card-body">
-                            <h2>100</h2>
+                            <?php if ($rows): ?>
+                            <h2><?php foreach($rows as $row){ 
+                                echo $row['post_count'];
+                            }?></h2>
+                            <?php else: ?>
+                            <p>No data found.</p>
+                            <?php endif; ?>
                             <a href="posts.php" class="btn-view-details">
                                 <i class='bx bx-show'></i>
                                 View Details
@@ -110,41 +139,39 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Posts2</h3>
-                            <i class='bx bx-file'></i>
+                            <h3>Trophy</h3>
+                            <i class='bx bx-trophy'></i>
                         </div>
                         <div class="card-body">
-                            <h2>100</h2>
-                            <a href="posts.php" class="btn-view-details">
+                            <?php if ($rows): ?>
+                            <h2><?php foreach($rows as $row){ 
+                                echo $row['trophy_count'];
+                            }?></h2>
+                            <?php else: ?>
+                            <p>No data found.</p>
+                            <?php endif; ?>
+                            <a href="trofet.php" class="btn-view-details">
                                 <i class='bx bx-show'></i>
                                 View Details
                             </a>
                         </div>
                     </div>
                 </div>
+                
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Page Settings</h3>
-                            <i class='bx bx-cog'></i>
-                        </div>
-                        <div class="card-body">
-                            <h2>10</h2>
-                            <a href="web_settings.php" class="btn-view-details">
-                                <i class='bx bx-show'></i>
-                                View Details
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <div class="card-header">
-                            <h3>SliderImages</h3>
+                            <h3>Slider Images</h3>
                             <i class='bx bxs-image-alt'></i>
                         </div>
                         <div class="card-body">
-                            <h2>4</h2>
+                            <?php if ($rows): ?>
+                            <h2><?php foreach($rows as $row){ 
+                                echo $row['slider_count'];
+                            }?></h2>
+                            <?php else: ?>
+                            <p>No data found.</p>
+                            <?php endif; ?>
                             <a href="sliderimages.php" class="btn-view-details">
                                 <i class='bx bx-show'></i>
                                 View Details
@@ -155,12 +182,12 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-header">
-                            <h3>SliderImages2</h3>
-                            <i class='bx bxs-image-alt'></i>
+                            <h3>Web Settings</h3>
+                            <i class='bx bx-cog'></i>
                         </div>
                         <div class="card-body">
-                            <h2>4</h2>
-                            <a href="sliderimages2.php" class="btn-view-details">
+                            <h2>!</h2>
+                            <a href="web_settings.php" class="btn-view-details">
                                 <i class='bx bx-show'></i>
                                 View Details
                             </a>
@@ -169,7 +196,7 @@
                 </div>
             </div>
         </div>
-        
+
 
     </div>
     </div>
@@ -209,10 +236,10 @@
         <div class="foot1">
             <h3>Travel</h3>
             <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="offers.html">Offers</a></li>
-                <li><a href="destinations.html">Destinations</a></li>
-                <li><a href="about-us.html">Contact Us</a></li>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="offers.php">Offers</a></li>
+                <li><a href="destinations.php">Destinations</a></li>
+                <li><a href="about-us.php">Contact Us</a></li>
             </ul>
         </div>
 

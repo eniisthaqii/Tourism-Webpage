@@ -1,3 +1,18 @@
+<?php 
+
+session_start(); 
+
+if (!(isset($_SESSION['role']))) {
+    header('Location: ../logout.php');
+    exit;
+}
+
+if ($_SESSION['role'] != 2) {
+    header('Location: /DASHBOARD/index.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +27,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
-    <link rel="icon" href="img/angry2022logo.png" />
 
     <title>Travel</title>
 </head>
@@ -20,17 +34,17 @@
 <body>
 <header>
         <div class="header">
-            <a href="#" class="logo">Travel</a>
+            <a href="../index.php" class="logo">Travel</a>
 
 
             <ul class="navbar">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="offers.html">Offers</a></li>
-                <li><a href="destinations.html">Destination</a></li>
-                <li><a href="about-us.html">Contact us</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="offers.php">Offers</a></li>
+                <li><a href="destinations.php">Destination</a></li>
+                <li><a href="about-us.php">Contact us</a></li>
             </ul>
             <div class="nav-logreg">
-                <a href="login.html">
+                <a href="login.php">
                     <div class="bx bxs-user" id="UserLogin-icon"></div>
                 </a>
                 <div class="bx bx-menu" id="menu-icon"></div>
@@ -48,20 +62,16 @@
                             <i class="bx bxs-dashboard"></i> Dashboard
                         </a>
                     </li>
+                    <?php if ($_SESSION['role'] == 2): ?>
                     <li>
                         <a href="users.php" class="active">
                             <i class="bx bxs-user"></i> Userat
                         </a>
                     </li>
+                    <?php endif; ?>
                     <li>
                         <a href="posts.php">
                             <i class="bx bxs-file"></i> Postet
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="web_settings.php">
-                            <i class="bx bxs-cog"></i> PageSettings
                         </a>
                     </li>
                     <li>
@@ -69,11 +79,13 @@
                             <i class="bx bxs-image-alt"></i> SliderImages
                         </a>
                     </li>
+                    <?php if ($_SESSION['role'] == 2): ?>
                     <li>
-                        <a href="sliderimages2.php">
-                            <i class="bx bxs-image-alt"></i> SliderImages2
+                        <a href="web_settings.php">
+                            <i class="bx bxs-cog"></i> WebSettings
                         </a>
                     </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
@@ -87,6 +99,13 @@
                         <label style="font-size: 1.5em;" for="newpostttt"><i class='bx bxs-user'></i>Add New
                             User</label>
                         <br><br>
+                        <?php
+                            include '../modelcontroller/model.php';
+                            $model = new Model();
+                            $shtoUseryn = $model->insertUseryy();
+                        ?>
+                        
+                        <form action="" method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="fullname"><i class='bx bxs-user-detail'></i>Full Name</label>
                             <input type="text" id="fullname" name="fullname" required>
@@ -119,17 +138,18 @@
                             <label for="role"><i class='bx bxs-user-detail'></i>Role</label>
                             <select id="role" name="role" required>
                                 <option value="" selected disabled>Select role</option>
-                                <option value="admin">Admin</option>
-                                <option value="player">Player</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Player">Player</option>
                             </select>
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="photo"><i class='bx bxs-camera'></i>Photo</label>
-                            <input type="file" id="photo" name="photo">
+                            <input type="file" id="photo" name="photoUser">
                         </div>
-                        <button type="submit">Add User</button>
+                        <button name="shtojeUserin" type="submit">Add User</button>
                         <br><br><br>
+                        </form>
                     </div>
 
                 </div>
@@ -154,102 +174,42 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <?php
+                    $rows = $model->fetchUsers();
+                    $i = 1;
+                    if(!empty($rows)){
+                    foreach($rows as $row){ 
+                    ?>
                     <tr>
-                        <td>1</td>
-                        <td><img src="https://via.placeholder.com/150x150" alt="Placeholder Image"></td>
-                        <td>John Doe</td>
-                        <td>jdoe</td>
-                        <td>jdoe@example.com</td>
-                        <td>********</td>
-                        <td>New York</td>
-                        <td>Manhattan</td>
-                        <td>10001</td>
-                        <td>Admin</td>
-                        <td>
-                            <button>Edit</button>
-                            <button>Delete</button>
-                        </td>
+                    <td><?php echo $i++; ?></td>
+                    <?php if($row['profili'] != null){?>
+                            <td><img src="/dashboard/<?php echo $row['profili']; ?>" alt="Photo"></td>
+                        <?php } else{?>
+                            <td><img src="/dashboard/uploads/userimg/userprofile.png" alt="Placeholder Image"></td>
+                        <?php } 
+                        ?>
+                    
+                    <td><?php echo $row['fullname']; ?></td>
+                    <td><?php echo $row['username']; ?></td>
+                    <td><?php echo $row['email']; ?></td>
+                    <td><?php echo $row['password']; ?></td>
+                    <td><?php echo $row['qyteti']; ?></td>
+                    <td><?php echo $row['fshati']; ?></td>
+                    <td><?php echo $row['zipkodi']; ?></td>
+                    <td><?php echo $row['roli']; ?></td>
+                    <td>
+
+                    <button name="editButton" onclick="window.location.href = 'edit_user.php?id=<?php echo $row['id']; ?>'">Edit</button>
+                    <button class="delete-btn" name='deleteButton' onclick="window.location.href = 'delete_user.php?id=<?php echo $row['id']; ?>'">Delete</button>
+                    </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td><img src="https://via.placeholder.com/150x150" alt="Placeholder Image"></td>
-                        <td>Jane Smith</td>
-                        <td>jsmith</td>
-                        <td>jsmith@example.com</td>
-                        <td>********</td>
-                        <td>San Francisco</td>
-                        <td>Marina</td>
-                        <td>94123</td>
-                        <td>Admin</td>
-                        <td>
-                            <button>Edit</button>
-                            <button>Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td><img src="https://via.placeholder.com/150x150" alt="Placeholder Image"></td>
-                        <td>Bob Johnson</td>
-                        <td>bjohnson</td>
-                        <td>bjohnson@example.com</td>
-                        <td>********</td>
-                        <td>Chicago</td>
-                        <td>Loop</td>
-                        <td>60601</td>
-                        <td>Player</td>
-                        <td>
-                            <button>Edit</button>
-                            <button>Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td><img src="https://via.placeholder.com/150x150" alt="Placeholder Image"></td>
-                        <td>Bob Johnson</td>
-                        <td>bjohnson</td>
-                        <td>bjohnson@example.com</td>
-                        <td>********</td>
-                        <td>King</td>
-                        <td>Shkarashnik</td>
-                        <td>24000</td>
-                        <td>Player</td>
-                        <td>
-                            <button>Edit</button>
-                            <button>Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td><img src="https://via.placeholder.com/150x150" alt="Placeholder Image"></td>
-                        <td>Bob Johnson</td>
-                        <td>bjohnson</td>
-                        <td>bjohnson@example.com</td>
-                        <td>********</td>
-                        <td>King</td>
-                        <td>Shkarashnik</td>
-                        <td>24000</td>
-                        <td>Player</td>
-                        <td>
-                            <button>Edit</button>
-                            <button>Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td><img src="https://via.placeholder.com/150x150" alt="Placeholder Image"></td>
-                        <td>Bob Johnson</td>
-                        <td>bjohnson</td>
-                        <td>bjohnson@example.com</td>
-                        <td>********</td>
-                        <td>King</td>
-                        <td>Shkarashnik</td>
-                        <td>24000</td>
-                        <td>Player</td>
-                        <td>
-                            <button>Edit</button>
-                            <button>Delete</button>
-                        </td>
-                    </tr>
+
+                    <?php
+                    }
+                    }else{
+                    echo "no data";
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
@@ -258,66 +218,8 @@
     <script src="../JS/script.js"></script>
     <script src="/DASHBOARD/DASHBOARDscript/userat.js"></script>
 </body>
-<footer>
-        <div id="SOCIALMEDIA" class="foot1">
-            <div class="socialmedia">
-                <h3>Social Media</h3>
-            </div>
-            <div id="mediat">
-                <li><a href="#">
-                        <h1><i class='bx bxl-instagram'
-                                onmouseover="this.style.background='linear-gradient(to bottom, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)'; this.style.color='transparent'; this.style.WebkitBackgroundClip='text'; "
-                                onmouseout="this.style.color='white'"></i></h1>
-                    </a></li>
-                <li><a href="#">
-                        <h1><i class='bx bxl-youtube' onmouseover="this.style.color='red'"
-                                onmouseout="this.style.color='white'"></i></h1>
-                    </a></li>
-                <li><a href="#">
-                        <h1><i class='bx bxl-twitter' onmouseover="this.style.color='rgb(29, 155, 240)'"
-                                onmouseout="this.style.color='white'"></i></h1>
-                    </a></li>
-                <li><a href="#">
-                        <h1><i class='bx bxl-twitch' onmouseover="this.style.color='#5c16c5'"
-                                onmouseout="this.style.color='white'"></i></h1>
-                    </a></li>
-                <li><a href="#">
-                        <h1><i class='bx bxl-facebook' onmouseover="this.style.color='#385898'"
-                                onmouseout="this.style.color='white'"></i></h1>
-                    </a></li>
-                <li><a href="#">
-                        <h1><i class='bx bxl-discord' onmouseover="this.style.color='#5865f2'"
-                                onmouseout="this.style.color='white'"></i></h1>
-                    </a></li>
-            </div>
-        </div>
-        <div class="foot1">
-            <h3>Travel</h3>
-            <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="offers.html">Offers</a></li>
-                <li><a href="destinations.html">Destinations</a></li>
-                <li><a href="about-us.html">Contact Us</a></li>
-            </ul>
-        </div>
+<?php
+    include 'includes/footer.php';
 
-        <div id="Destf" class="foot1">
-            <h3>Destinations</h3>
-            <li>Paphos</li>
-            <li>Paris</li>
-            <li>Bali</li>
-            <li>Costa Brava</li>
-            <li>Edinborough</li>
-            <li>Machu Pichu</li>
-        </div>
-        <div id="offF" class="foot1">
-            <h3>Contact Us</h3>
-            <li><i class='bx bx-current-location cont'> 4712 Camp Road, Prishtine, Kosove</i></li>
-            <li><i class='bx bx-phone cont'> 045-666-765</i></li>
-            <li><i class='bx bx-envelope cont'> Turismwebpage@gmail.com</i></li>
-
-        </div>
-
-
-    </footer>
+?>
 </html>

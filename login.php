@@ -1,3 +1,11 @@
+<?php session_start(); ?>
+<?php include 'modelcontroller/model.php'; ?>
+<?php  
+if (isset($_SESSION['role'])) {
+    header('Location: /DASHBOARD/');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,17 +36,17 @@
 
     <header>
         <div class="header">
-            <a href="#" class="logo">Travel</a>
+            <a href="index.php" class="logo">Travel</a>
 
 
             <ul class="navbar">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="offers.html">Offers</a></li>
-                <li><a href="#">Destination</a></li>
-                <li><a href="#">Contact us</a></li>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="offers.php">Offers</a></li>
+                <li><a href="destinations.php">Destination</a></li>
+                <li><a href="about-us.php">Contact us</a></li>
             </ul>
             <div class="nav-logreg">
-                <a href="Login.html">
+                <a href="Login.php">
                     <div class="bx bxs-user" id="UserLogin-icon"></div>
                 </a>
                 <div class="bx bx-menu" id="menu-icon"></div>
@@ -53,11 +61,17 @@
     <div id="loginform">
         <div id="loginform1">
             <h1><b>LOGIN</b></h1>
-            <h6>New to OUR PAGE? <a href="register.html"><strong style="color: #094f8d;">Create an account!</strong></a>
+            <h6>New to OUR PAGE? <a href="register.php"><strong style="color: #094f8d;">Create an account!</strong></a>
             </h6>
-            <input class="empws" id="em1" type="email" placeholder="Enter email"><br>
-            <input class="empws" id="pw1" type="password" placeholder="Enter password"><br>
-            <input class="empws" id="submiti" type="submit" value="Login" onclick="validoMeRegex()"><br>
+            <?php
+  
+              $loginy = $modeli->loginUser();
+        ?>
+        <form action="" method="post">
+            <input class="empws" id="em1" type="email" name="emaili" placeholder="Enter email"><br>
+            <input class="empws" id="pw1" type="password" name="passwordi" placeholder="Enter password"><br>
+            <input class="empws" id="submiti" type="submit" name="loginUsery" value="Login" onclick="validoMeRegex()"><br>
+            </form>
         </div>
     </div>
 
@@ -169,16 +183,16 @@
         <div class="foot1">
             <h3>Travel</h3>
             <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="offers.html">Offers</a></li>
-                <li><a href="destinations.html">Destinations</a></li>
-                <li><a href="about-us.html">About us</a></li>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="offers.php">Offers</a></li>
+                <li><a href="destinations.php">Destinations</a></li>
+                <li><a href="about-us.php">About us</a></li>
             </ul>
         </div>
         <div id="offF" class="foot1">
             <h3>Offers</h3>
             <li><a href="#">Places</a></li>
-            <li><a href="offers.html">offers</a></li>
+            <li><a href="offers.php">offers</a></li>
             <li><a href="#">Lifestyle</a></li>
             <li><a href="#">Help</a></li>
         </div>
