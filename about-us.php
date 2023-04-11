@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+<?php include 'modelcontroller/model.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Destinations</title>
     <!-- linku i css-->
     <link rel="stylesheet" href="CSS/style.css">
@@ -13,6 +16,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+        <?php 
+        $modeli = new Model();
+        $webLogo = $modeli->fetchWebSettings();
+
+        if(!empty($webLogo)){
+          foreach($webLogo as $row){
+            
+    ?>
 </head>
 
 <body>
@@ -30,12 +41,29 @@
                 <li><a href="about-us.php">Contact us</a></li>
             </ul>
             <div class="nav-logreg">
-                <a href="login.php">
-                    <div class="bx bxs-user" id="UserLogin-icon"></div>
+            <?php 
+        if (isset($_SESSION['role'])) {
+          ?>
+          <div class="fotoLogOut">
+                <a href="dashboard/">
+                  <img src="dashboard/<?php echo $_SESSION['profile'] ?>" alt="Placeholder Image" style="height: 50px;width: 50px;border-radius: 50%;overflow: hidden" />
                 </a>
+                <a href="/logout.php" style="color:black">
+                      <i class="bx bx-log-out"></i> Logout
+                </a>
+            </div>
+          <?php
+        }
+        else{
+          ?>
+          <a href="/login.php"><img src="/img/bxs-user.svg" alt="LOGIN" style="height: 30px"/></a>
+          <?php
+        }}}
+        ?>
                 <div class="bx bx-menu" id="menu-icon"></div>
             </div>
         </div>
+    
 
     </header>
 

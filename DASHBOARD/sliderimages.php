@@ -1,3 +1,11 @@
+<?php session_start(); 
+if (!(isset($_SESSION['role']))) {
+    header('Location: ../logout.php');
+    exit;
+}
+?>
+<?php include '../modelcontroller/model.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,20 +15,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/style.css" />
     <link rel="stylesheet" href="DASHBOARDstyle/stili.css" />
+    <link rel="stylesheet" href="DASHBOARDstyle/sliderimages.css">
     <link rel="stylesheet" href="DASHBOARDstyle/sliderimages2.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
     <link rel="icon" href="img/angry2022logo.png" />
+    
 
     <title>Travel</title>
+    <?php 
+        $modeli = new Model();
+        $webLogo = $modeli->fetchWebSettings();
+
+        if(!empty($webLogo)){
+          foreach($webLogo as $row){
+            
+    ?>
 </head>
 
 <body>
 <header>
-        <div class="header">
-            <a href="#" class="logo">Travel</a>
+<div class="header">
+            <a href="../index.php" class="logo">Travel</a>
 
 
             <ul class="navbar">
@@ -30,10 +48,27 @@
                 <li><a href="about-us.php">Contact us</a></li>
             </ul>
             <div class="nav-logreg">
-                <a href="login.php">
-                    <div class="bx bxs-user" id="UserLogin-icon"></div>
-                </a>
                 <div class="bx bx-menu" id="menu-icon"></div>
+
+                <?php 
+        if (isset($_SESSION['role'])) {
+          ?>
+          <div class="fotoLogOut">
+                <a href="user_settings.php">
+                  <img src="<?php echo $_SESSION['profile'] ?>" alt="Placeholder Image" style="height: 50px;width: 50px;border-radius: 50%;overflow: hidden" />
+                </a>
+                <a href="/logout.php" style="color:black">
+                      <i class="bx bx-log-out"></i> Logout
+                </a>
+            </div>
+          <?php
+             }
+        else{
+          ?>
+          <a href="/login.php"><img src="/img/bxs-user.svg" alt="LOGIN" style="height: 30px"/></a>
+          <?php
+        }}}
+        ?>
             </div>
         </div>
 
@@ -48,79 +83,112 @@
                             <i class="bx bxs-dashboard"></i> Dashboard
                         </a>
                     </li>
+                    <?php if ($_SESSION['role'] == 2): ?>
                     <li>
-                        <a href="users.php">
+                        <a href="users.php" >
                             <i class="bx bxs-user"></i> Userat
                         </a>
                     </li>
+                    <?php endif; ?>
                     <li>
                         <a href="posts.php">
                             <i class="bx bxs-file"></i> Postet
                         </a>
                     </li>
-                    
                     <li>
-                        <a href="web_settings.php">
-                            <i class="bx bxs-cog"></i> PageSettings
+                        <a href="trofet.php">
+                            <i class="bx bxs-trophy"></i> Trofet
                         </a>
                     </li>
                     <li>
-                        <a href="sliderimages.php">
+                        <a href="sliderimages.php" class="active">
                             <i class="bx bxs-image-alt"></i> SliderImages
                         </a>
                     </li>
+                    <?php if ($_SESSION['role'] == 2): ?>
                     <li>
-                        <a href="sliderimages2.php" class="active">
-                            <i class="bx bxs-image-alt"></i> SliderImages2
+                        <a href="web_settings.php">
+                            <i class="bx bxs-cog"></i> WebSettings
                         </a>
                     </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
 
-        <div class="slider">
-            <div class="slider-images-form">
-                <h2>Slider Images</h2>
-                <div class="slider-images">
-                    <div class="slider-image">
-                        <img src="https://via.placeholder.com/150x150" alt="Slider Image"><br>
-                        <label for="slider-image-1"><i class='bx bxs-camera'></i></label>
-                        <input type="file" id="slider-image-1" name="slider-image-1">
-                    </div>
-                    <div class="slider-image">
-                        <img src="https://via.placeholder.com/150x150" alt="Slider Image"><br>
-                        <label for="slider-image-2"><i class='bx bxs-camera'></i></label>
-                        <input type="file" id="slider-image-2" name="slider-image-2">
-                    </div>
-                    <div class="slider-image">
-                        <img src="https://via.placeholder.com/150x150" alt="Slider Image"><br>
-                        <label for="slider-image-3"><i class='bx bxs-camera'></i></label>
-                        <input type="file" id="slider-image-3" name="slider-image-3">
-                    </div>
-                    <div class="slider-image">
-                        <img src="https://via.placeholder.com/150x150" alt="Slider Image"><br>
-                        <label for="slider-image-4"><i class='bx bxs-camera'></i></label>
-                        <input type="file" id="slider-image-4" name="slider-image-4">
-                    </div>
-                    <div class="slider-image">
-                        <img src="https://via.placeholder.com/150x150" alt="Slider Image"><br>
-                        <label for="slider-image-5"><i class='bx bxs-camera'></i></label>
-                        <input type="file" id="slider-image-5" name="slider-image-5">
-                    </div>
-                    <div class="slider-image">
-                        <img src="https://via.placeholder.com/150x150" alt="Slider Image"><br>
-                        <label for="slider-image-5"><i class='bx bxs-camera'></i></label>
-                        <input type="file" id="slider-image-5" name="slider-image-6">
-                    </div>
+        <div class="shtimiKlientav">
+            <a href="#" class="btn-add-new">Add New</a>
+            <div class="modal hidden">
+                <div class="modal-content">
+                    <div class="formSHTIMIuserav">
+                        <span class="close-modal">&times;</span>
+                        <label style="font-size: 1.5em;" for="newpostttt"><i class='bx bxs-camera'></i>Add New
+                            Image</label>
+                        <br><br>
+                        <br>
+                        <?php
+                            $model = new Model();
+                            $insert = $model->insertSlider();
+                        ?>
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="photo"><i class='bx bxs-camera'></i>Photo</label>
+                                <input type="file" id="photo" name="photoSlider">
+                            </div>
+                            <button name="shtoSliderin" type="submit">Upload new image</button>
+                        </form>
 
+                        <br><br><br>
+                    </div>
 
                 </div>
             </div>
-            <button class="save-button" type="submit"><i class='bx bxs-save'></i>Save Changes</button>
+            <div class="overlay hidden"></div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Image</th>
+                        <th>Path</th>
+                        <th>Author</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $rows = $model->fetchSlider();
+                    $i = 1;
+                    if(!empty($rows)){
+                    foreach($rows as $row){ 
+                    ?>
+                    <tr>
+                    <td><?php echo $i++; ?></td>
+                    <td><img src="<?php echo $row['imgpath']; ?>" alt="Placeholder Image"></td>
+                    <td><?php echo $row['imgpath']; ?></td>
+                    <td><?php echo $row['author']; ?></td>
+
+                    <td>
+
+                    <button onclick="window.location.href = 'edit_slider.php?id=<?php echo $row['id']; ?>'">Edit</button>
+                    <button onclick="window.location.href = 'delete_slider.php?id=<?php echo $row['id']; ?>'">Delete</button>
+                    </td>
+                    </tr>
+
+                    <?php
+                    }
+                    }else{
+                    echo "no data";
+                    }
+                    ?>
+                </tbody>
+            </table>
         </div>
-
-
     </div>
+    
+    <script src="../script/script.js"></script>
+    <script src="/DASHBOARDscript/userat.js"></script>
+    <script src="/dashboard/DASHBOARDscript/userat.js"></script>
+
 
     <script>
         const imageInputs = document.querySelectorAll(".slider-images input[type=file]");

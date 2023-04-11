@@ -335,16 +335,7 @@
             return $data;
         }
 
-        public function fetchTrophy(){
-            $data = null;
-            $query = "SELECT * FROM trophy";
-            if ($sql = $this->conn->query($query)) {
-                while ($row = mysqli_fetch_assoc($sql)) {
-                    $data[] = $row;
-                }
-            }
-            return $data;
-        }
+    
 
 
         public function fetchSlider(){
@@ -378,7 +369,6 @@
             $query = "SELECT 
             (SELECT COUNT(*) FROM user) AS user_count,
             (SELECT COUNT(*) FROM post) AS post_count,
-            (SELECT COUNT(*) FROM trophy) AS trophy_count,
             (SELECT COUNT(*) FROM sliderimg) AS slider_count;";
 
             if($sql = $this->conn->query($query)){
@@ -389,19 +379,7 @@
             return $data;
         }
 
-        public function trofetEfituaraDhefitimi(){
-            $data = null;
-            $query = "SELECT 
-            (SELECT COUNT(*) FROM trophy where trophy_place like '1%')AS trofet_e_fituara,
-            (SELECT SUM(trophy_prizepool) FROM trophy) AS shumaFituese;";
-
-            if($sql = $this->conn->query($query)){
-                while($row = mysqli_fetch_assoc($sql)){
-                    $data[] = $row;
-                }
-            }
-            return $data;
-        }
+       
         
 
 
@@ -426,15 +404,7 @@
             }
         }
 
-        public function deleteTrophy($id){
- 
-            $query = "DELETE FROM trophy where id = '$id'";
-            if ($sql = $this->conn->query($query)) {
-                return true;
-            }else{
-                return false;
-            }
-        }
+        
 
         public function deleteSlider($id){
  
@@ -501,37 +471,6 @@
                 return false;
             }
         }
-
-        public function editTrophy($id){
- 
-            $data = null;
- 
-            $query = "SELECT * FROM trophy WHERE id = '$id'";
-            if ($sql = $this->conn->query($query)) {
-                while($row = $sql->fetch_assoc()){
-                    $data = $row;
-                }
-            }
-            return $data;
-        }
-
-
-        public function updateTrophy($data){ 
-            if($data['imageTROPHY'] == null){
-                $query = "UPDATE trophy SET trophy_name='$data[trophy_name]',trophy_place='$data[trophy_place]', trophy_prizepool='$data[trophy_prizepool]' WHERE id='$data[id] '";
-            }
-            else{
-                
-                $query = "UPDATE trophy SET trophy_name='$data[trophy_name]',trophy_place='$data[trophy_place]', trophy_prizepool='$data[trophy_prizepool]',  trophy_img='$data[trophy_img]' WHERE id='$data[id] '";
-                
-            }   
-            if ($sql = $this->conn->query($query)) {
-                return true;
-            }else{
-                return false;
-            }
-        }
-
 
         public function editSlider($id){
  

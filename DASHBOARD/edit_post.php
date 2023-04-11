@@ -13,6 +13,8 @@ if ($_SESSION['role'] != 2) {
 }
 
 ?>
+<?php include '../modelcontroller/model.php'; ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +23,9 @@ if ($_SESSION['role'] != 2) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/style.css" />
+    <link rel="stylesheet" href="../CSS/style.css" />
+    <link rel="stylesheet" href="DASHBOARDstyle/stili.css" />
+    <link rel="stylesheet" href="DASHBOARDstyle/postet.css">
     <link rel="stylesheet" href="/dashboard/DASHBOARDstyle/stili.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,14 +33,22 @@ if ($_SESSION['role'] != 2) {
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
     <link rel="icon" href="img/angry2022logo.png" />
 
-    <title>ANGRY E-SPORTS</title>
+    <title>Travel</title>
+    <?php 
+        $modeli = new Model();
+        $webLogo = $modeli->fetchWebSettings();
+
+        if(!empty($webLogo)){
+          foreach($webLogo as $row){
+            
+    ?>
     
 </head>
 
 <body>
 <header>
-        <div class="header">
-            <a href="../index.php" class="logo">Travel</a>
+<div class="header">
+            <a href="#" class="logo">Travel</a>
 
 
             <ul class="navbar">
@@ -46,17 +58,20 @@ if ($_SESSION['role'] != 2) {
                 <li><a href="about-us.php">Contact us</a></li>
             </ul>
             <div class="nav-logreg">
-                <a href="login.php">
-                    <div class="bx bxs-user" id="UserLogin-icon"></div>
-                </a>
-                <div class="bx bx-menu" id="menu-icon"></div>
+            <a href="user_settings.php">
+                <img src="<?php echo $_SESSION['profile'] ?>" alt="Placeholder Image" style="height: 50px;width: 50px;border-radius: 50%;overflow: hidden" />
+            </a>
 
-                <a href="/logout.php" style="color:black">
+
+            <a href="/logout.php" style="color:black">
                 <i class="bx bx-log-out"></i> Logout
             </a>
+
+            <a href="#"><img src="/img/bxs-cart.svg" alt="SHOP" style="height: 30px" /></a>
+            <div id="menu">
+                <a href="#"><img src="/img/bx-menu.svg" alt="MENU" style="height: 30px" /></a>
             </div>
         </div>
-
     </header>
     <div class="sidebarANDcontent">
         <div class="sidebarMADH">
@@ -68,7 +83,7 @@ if ($_SESSION['role'] != 2) {
                             <i class="bx bxs-dashboard"></i> Dashboard
                         </a>
                     </li>
-                    <?php if ($_SESSION['role'] == 2): ?>
+                    <?php }} if ($_SESSION['role'] == 2): ?>
                     <li>
                         <a href="users.php">
                             <i class="bx bxs-user"></i> Userat
@@ -76,11 +91,15 @@ if ($_SESSION['role'] != 2) {
                     </li>
                     <?php endif; ?>
                     <li>
-                        <a href="posts.php">
+                        <a href="posts.php" class="active">
                             <i class="bx bxs-file"></i> Postet
                         </a>
                     </li>
-                    
+                    <li>
+                        <a href="trofet.php">
+                            <i class="bx bxs-trophy"></i> Trofet
+                        </a>
+                    </li>
                     <li>
                         <a href="sliderimages.php">
                             <i class="bx bxs-image-alt"></i> SliderImages
@@ -99,7 +118,6 @@ if ($_SESSION['role'] != 2) {
 
 
         <?php
-              include '../modelcontroller/model.php';
               $model = new Model();
               $id = $_REQUEST['id'];
               $row = $model->editPost($id);

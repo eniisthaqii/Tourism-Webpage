@@ -1,3 +1,11 @@
+<?php session_start(); 
+if (!(isset($_SESSION['role']))) {
+    header('Location: ../logout.php');
+    exit;
+}
+?>
+<?php include '../modelcontroller/model.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,14 +21,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
     <link rel="icon" href="img/angry2022logo.png" />
+    <?php 
+        $modeli = new Model();
+        $webLogo = $modeli->fetchWebSettings();
+
+        if(!empty($webLogo)){
+          foreach($webLogo as $row){
+            
+    ?>
 
     <title>Travel</title>
 </head>
 
 <body>
 <header>
-        <div class="header">
-            <a href="#" class="logo">Travel</a>
+<div class="header">
+            <a href="../index.php" class="logo">Travel</a>
 
 
             <ul class="navbar">
@@ -30,10 +46,27 @@
                 <li><a href="about-us.php">Contact us</a></li>
             </ul>
             <div class="nav-logreg">
-                <a href="login.php">
-                    <div class="bx bxs-user" id="UserLogin-icon"></div>
-                </a>
                 <div class="bx bx-menu" id="menu-icon"></div>
+
+                <?php 
+        if (isset($_SESSION['role'])) {
+          ?>
+          <div class="fotoLogOut">
+                <a href="user_settings.php">
+                  <img src="<?php echo $_SESSION['profile'] ?>" alt="Placeholder Image" style="height: 50px;width: 50px;border-radius: 50%;overflow: hidden" />
+                </a>
+                <a href="/logout.php" style="color:black">
+                      <i class="bx bx-log-out"></i> Logout
+                </a>
+            </div>
+          <?php
+             }
+        else{
+          ?>
+          <a href="/login.php"><img src="/img/bxs-user.svg" alt="LOGIN" style="height: 30px"/></a>
+          <?php
+        }}}
+        ?>
             </div>
         </div>
 
@@ -48,19 +81,21 @@
                             <i class="bx bxs-dashboard"></i> Dashboard
                         </a>
                     </li>
+                    <?php if ($_SESSION['role'] == 2): ?>
                     <li>
                         <a href="users.php">
                             <i class="bx bxs-user"></i> Userat
                         </a>
                     </li>
+                    <?php endif; ?>
                     <li>
                         <a href="posts.php" class="active">
                             <i class="bx bxs-file"></i> Postet
                         </a>
                     </li>
                     <li>
-                        <a href="web_settings.php">
-                            <i class="bx bxs-cog"></i> PageSettings
+                        <a href="trofet.php">
+                            <i class="bx bxs-trophy"></i> Trofet
                         </a>
                     </li>
                     <li>
@@ -68,11 +103,13 @@
                             <i class="bx bxs-image-alt"></i> SliderImages
                         </a>
                     </li>
+                    <?php if ($_SESSION['role'] == 2): ?>
                     <li>
-                        <a href="sliderimages2.php">
-                            <i class="bx bxs-image-alt"></i> SliderImages2
+                        <a href="web_settings.php">
+                            <i class="bx bxs-cog"></i> WebSettings
                         </a>
                     </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
@@ -82,8 +119,11 @@
             <!-- Modal for adding new post -->
             <div class="modal hidden">
                 <div class="modal-content">
-                    <form id="add-post-form">
-
+                    <form id="add-post-form" method="POST" action="" >
+                        <?php
+                            $model = new Model();
+                            $shtoPoste=$model->insertPosts();
+                        ?>
                         <label style="font-size: 1.5em;" for="newpostttt"><i class='bx bxs-file'></i>Add New
                             Post</label>
                         <br>
@@ -92,7 +132,7 @@
                         <input type="text" id="year" name="year" required>
                         <label for="content">Content:</label>
                         <textarea id="content" name="content" required></textarea><br>
-                        <button type="submit">Add Post</button>
+                        <button name="shtoPostin" type="submit">Add Post</button>
                     </form>
                 </div>
             </div>
@@ -109,77 +149,31 @@
                     </tr>
                 </thead>
                 <tbody>
+                <?php
+                    
+                    $rows = $model->fetchPosts();
+                    $i = 1;
+                    if(!empty($rows)){
+                    foreach($rows as $row){ 
+                    ?>
                     <tr>
-                        <td>1</td>
-                        <td>2018</td>
-                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quibusdam dicta reiciendis nisi, dolor saepe eligendi, quia enim illum corrupti quae tempore illo ad consequatur cum consectetur, molestias esse exercitationem.
-                        Lorem ipsum dolor sit amet consecteturadipisicing elit. Nisi quod quos voluptasearum. Corrupti iure provident, minima illoiusto eligendi cum maxime odit exercitationemunde quidem blanditiis iste fuga quisquam!
-                        Lorem ipsum dolor, sit amet consecteturadipisicing elit. Cumque, consequuntur rerumducimus voluptatibus consequatur quas optioplaceat recusandae asperiores sint hic, illumdoloribus alias atque obcaecati nisi nullafugiat nobis.
-                        </td>
-                        <td>jdoe@example.com</td>
-                        <td>
-                            <button class="btn-edit">Edit</button>
-                            <button class="btn-delete">Delete</button>
-                        </td>
+                    <td><?php echo $i++; ?></td>
+                    <td><?php echo $row['year']; ?></td>
+                    <td><?php echo $row['content']; ?></td>
+                    <td><?php echo $row['author']; ?></td>
+                    <td>
+                        
+                            <button class="btn-edit" onclick="window.location.href = 'edit_post.php?id=<?php echo $row['id']; ?>'">Edit</button>
+                            <button class="btn-delete" onclick="window.location.href = 'delete_posts.php?id=<?php echo $row['id']; ?>'">Delete</button>
+                    </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>2019</td>
-                        <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book.</td>
-                        <td>jdoe@example.com</td>
-                        <td>
-                            <button class="btn-edit">Edit</button>
-                            <button class="btn-delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>2020</td>
-                        <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book.</td>
-                        <td>jdoe@example.com</td>
-                        <td>
-                            <button class="btn-edit">Edit</button>
-                            <button class="btn-delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>2021</td>
-                        <td>jdoejdoejdoejdoejdoejdoejdoejdoejdoejdoejdoejdoejdoejdoejdoejdoejdoejdoejdoe</td>
-                        <td>jdoe@example.com</td>
-                        <td>
-                            <button class="btn-edit">Edit</button>
-                            <button class="btn-delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>2022</td>
-                        <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book.</td>
-                        <td>jdoe@example.com</td>
-                        <td>
-                            <button class="btn-edit">Edit</button>
-                            <button class="btn-delete">Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>2023</td>
-                        <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book.</td>
-                        <td>jdoe@example.com</td>
-                        <td>
-                            <button class="btn-edit">Edit</button>
-                            <button class="btn-delete">Delete</button>
-                        </td>
-                    </tr>
+
+                    <?php
+                    }
+                    }else{
+                    echo "no data";
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
@@ -190,8 +184,8 @@
 
     </div>
 
-    <script src="../JS/script.js"></script>
-    <script src="/DASHBOARD/DASHBOARDscript/postet.js"></script>
+    <script src="../script/script.js"></script>
+    <script src="/dashboard/DASHBOARDscript/postet.js"></script>
 </body>
 
 

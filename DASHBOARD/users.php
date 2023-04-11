@@ -12,6 +12,7 @@ if ($_SESSION['role'] != 2) {
     exit;
 }
 ?>
+<?php include '../modelcontroller/model.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,11 +23,18 @@ if ($_SESSION['role'] != 2) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/style.css" />
     <link rel="stylesheet" href="DASHBOARDstyle/stili.css" />
-    <link rel="stylesheet" href="DASHBOARDstyle/userat.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
+    <?php 
+        $modeli = new Model();
+        $webLogo = $modeli->fetchWebSettings();
+
+        if(!empty($webLogo)){
+          foreach($webLogo as $row){
+            
+    ?>
 
     <title>Travel</title>
 </head>
@@ -44,10 +52,27 @@ if ($_SESSION['role'] != 2) {
                 <li><a href="about-us.php">Contact us</a></li>
             </ul>
             <div class="nav-logreg">
-                <a href="login.php">
-                    <div class="bx bxs-user" id="UserLogin-icon"></div>
-                </a>
                 <div class="bx bx-menu" id="menu-icon"></div>
+
+                <?php 
+        if (isset($_SESSION['role'])) {
+          ?>
+          <div class="fotoLogOut">
+                <a href="user_settings.php">
+                  <img src="<?php echo $_SESSION['profile'] ?>" alt="Placeholdeer Image" style="height: 50px;width: 50px;border-radius: 50%;overflow: hidden" />
+                </a>
+                <a href="/logout.php" style="color:black">
+                      <i class="bx bx-log-out"></i> Logout
+                </a>
+            </div>
+          <?php
+             }
+        else{
+          ?>
+          <a href="/login.php"><img src="/img/bxs-user.svg" alt="LOGIN" style="height: 30px"/></a>
+          <?php
+        }}}
+        ?>
             </div>
         </div>
 
@@ -100,7 +125,6 @@ if ($_SESSION['role'] != 2) {
                             User</label>
                         <br><br>
                         <?php
-                            include '../modelcontroller/model.php';
                             $model = new Model();
                             $shtoUseryn = $model->insertUseryy();
                         ?>
@@ -155,6 +179,7 @@ if ($_SESSION['role'] != 2) {
                 </div>
             </div>
             <div class="overlay hidden"></div>
+
 
 
             <table class="table">
@@ -215,11 +240,71 @@ if ($_SESSION['role'] != 2) {
         </div>
     </div>
     
-    <script src="../JS/script.js"></script>
-    <script src="/DASHBOARD/DASHBOARDscript/userat.js"></script>
+    
+    <script src="../js/script.js"></script>
+    <script src="/dashboard/DASHBOARDscript/userat.js"></script>
+    
 </body>
-<?php
-    include 'includes/footer.php';
+<footer>
+        <div id="SOCIALMEDIA" class="foot1">
+            <div class="socialmedia">
+                <h3>Social Media</h3>
+            </div>
+            <div id="mediat">
+                <li><a href="#">
+                        <h1><i class='bx bxl-instagram'
+                                onmouseover="this.style.background='linear-gradient(to bottom, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)'; this.style.color='transparent'; this.style.WebkitBackgroundClip='text'; "
+                                onmouseout="this.style.color='white'"></i></h1>
+                    </a></li>
+                <li><a href="#">
+                        <h1><i class='bx bxl-youtube' onmouseover="this.style.color='red'"
+                                onmouseout="this.style.color='white'"></i></h1>
+                    </a></li>
+                <li><a href="#">
+                        <h1><i class='bx bxl-twitter' onmouseover="this.style.color='rgb(29, 155, 240)'"
+                                onmouseout="this.style.color='white'"></i></h1>
+                    </a></li>
+                <li><a href="#">
+                        <h1><i class='bx bxl-twitch' onmouseover="this.style.color='#5c16c5'"
+                                onmouseout="this.style.color='white'"></i></h1>
+                    </a></li>
+                <li><a href="#">
+                        <h1><i class='bx bxl-facebook' onmouseover="this.style.color='#385898'"
+                                onmouseout="this.style.color='white'"></i></h1>
+                    </a></li>
+                <li><a href="#">
+                        <h1><i class='bx bxl-discord' onmouseover="this.style.color='#5865f2'"
+                                onmouseout="this.style.color='white'"></i></h1>
+                    </a></li>
+            </div>
+        </div>
+        <div class="foot1">
+            <h3>Travel</h3>
+            <ul>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="offers.php">Offers</a></li>
+                <li><a href="destinations.php">Destinations</a></li>
+                <li><a href="about-us.php">Contact Us</a></li>
+            </ul>
+        </div>
 
-?>
+        <div id="Destf" class="foot1">
+            <h3>Destinations</h3>
+            <li>Paphos</li>
+            <li>Paris</li>
+            <li>Bali</li>
+            <li>Costa Brava</li>
+            <li>Edinborough</li>
+            <li>Machu Pichu</li>
+        </div>
+        <div id="offF" class="foot1">
+            <h3>Contact Us</h3>
+            <li><i class='bx bx-current-location cont'> 4712 Camp Road, Prishtine, Kosove</i></li>
+            <li><i class='bx bx-phone cont'> 045-666-765</i></li>
+            <li><i class='bx bx-envelope cont'> Turismwebpage@gmail.com</i></li>
+
+        </div>
+
+
+    </footer>
 </html>

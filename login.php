@@ -28,6 +28,14 @@ if (isset($_SESSION['role'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Paytone+One&
         family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <?php 
+        $modeli = new Model();
+        $webLogo = $modeli->fetchWebSettings();
+
+        if(!empty($webLogo)){
+          foreach($webLogo as $row){
+            
+    ?>
     <!-- Google-fonts-->
 </head>
 
@@ -40,17 +48,34 @@ if (isset($_SESSION['role'])) {
 
 
             <ul class="navbar">
-                <li><a href="home.php">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="offers.php">Offers</a></li>
                 <li><a href="destinations.php">Destination</a></li>
                 <li><a href="about-us.php">Contact us</a></li>
             </ul>
             <div class="nav-logreg">
-                <a href="Login.php">
-                    <div class="bx bxs-user" id="UserLogin-icon"></div>
+            <?php 
+        if (isset($_SESSION['role'])) {
+          ?>
+          <div class="fotoLogOut">
+                <a href="dashboard/">
+                  <img src="dashboard/<?php echo $_SESSION['profile'] ?>" alt="Placeholder Image" style="height: 50px;width: 50px;border-radius: 50%;overflow: hidden" />
                 </a>
+                <a href="/logout.php" style="color:black">
+                      <i class="bx bx-log-out"></i> Logout
+                </a>
+            </div>
+          <?php
+        }
+        else{
+          ?>
+          <a href="/login.php"><img src="/img/bxs-user.svg" alt="LOGIN" style="height: 30px"/></a>
+          <?php
+        }}}
+        ?>
                 <div class="bx bx-menu" id="menu-icon"></div>
             </div>
+            
         </div>
 
     </header>
@@ -64,9 +89,8 @@ if (isset($_SESSION['role'])) {
             <h6>New to OUR PAGE? <a href="register.php"><strong style="color: #094f8d;">Create an account!</strong></a>
             </h6>
             <?php
-  
               $loginy = $modeli->loginUser();
-        ?>
+            ?>
         <form action="" method="post">
             <input class="empws" id="em1" type="email" name="emaili" placeholder="Enter email"><br>
             <input class="empws" id="pw1" type="password" name="passwordi" placeholder="Enter password"><br>

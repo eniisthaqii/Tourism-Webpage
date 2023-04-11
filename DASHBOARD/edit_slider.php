@@ -13,6 +13,8 @@ if ($_SESSION['role'] != 2) {
 }
 
 ?>
+<?php include '../modelcontroller/model.php'; ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +31,15 @@ if ($_SESSION['role'] != 2) {
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
     <link rel="icon" href="img/angry2022logo.png" />
 
-    <title>ANGRY E-SPORTS</title>
+    <title>Travel</title>
+    <?php 
+        $modeli = new Model();
+        $webLogo = $modeli->fetchWebSettings();
+
+        if(!empty($webLogo)){
+          foreach($webLogo as $row){
+            
+    ?>
 </head>
 
 <body>
@@ -45,9 +55,25 @@ if ($_SESSION['role'] != 2) {
                 <li><a href="about-us.php">Contact us</a></li>
             </ul>
             <div class="nav-logreg">
-                <a href="login.php">
-                    <div class="bx bxs-user" id="UserLogin-icon"></div>
+            <?php 
+        if (isset($_SESSION['role'])) {
+          ?>
+          <div class="fotoLogOut">
+                <a href="dashboard/">
+                  <img src="dashboard/<?php echo $_SESSION['profile'] ?>" alt="Placeholder Image" style="height: 50px;width: 50px;border-radius: 50%;overflow: hidden" />
                 </a>
+                <a href="/logout.php" style="color:black">
+                      <i class="bx bx-log-out"></i> Logout
+                </a>
+            </div>
+          <?php
+        }
+        else{
+          ?>
+          <a href="/login.php"><img src="/img/bxs-user.svg" alt="LOGIN" style="height: 30px"/></a>
+          <?php
+        }}}
+        ?>
                 <div class="bx bx-menu" id="menu-icon"></div>
 
                 <a href="/logout.php" style="color:black">
@@ -98,7 +124,6 @@ if ($_SESSION['role'] != 2) {
 
 
         <?php
-              include '../modelcontroller/model.php';
               $model = new Model();
               $id = $_REQUEST['id'];
               $row = $model->editSlider($id);

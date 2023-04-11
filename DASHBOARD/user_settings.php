@@ -4,6 +4,8 @@ if (!(isset($_SESSION['role']))) {
     exit;
 }
 ?>
+<?php include '../modelcontroller/model.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,8 +19,17 @@ if (!(isset($_SESSION['role']))) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css" />
+    
 
     <title>Travel</title>
+    <?php 
+        $modeli = new Model();
+        $webLogo = $modeli->fetchWebSettings();
+
+        if(!empty($webLogo)){
+          foreach($webLogo as $row){
+            
+    ?>
 </head>
 
 <body>
@@ -34,9 +45,25 @@ if (!(isset($_SESSION['role']))) {
                 <li><a href="about-us.php">Contact us</a></li>
             </ul>
             <div class="nav-logreg">
-                <a href="login.php">
-                    <div class="bx bxs-user" id="UserLogin-icon"></div>
+            <?php 
+        if (isset($_SESSION['role'])) {
+          ?>
+          <div class="fotoLogOut">
+                <a href="dashboard/">
+                  <img src="dashboard/<?php echo $_SESSION['profile'] ?>" alt="Placeholder Image" style="height: 50px;width: 50px;border-radius: 50%;overflow: hidden" />
                 </a>
+                <a href="/logout.php" style="color:black">
+                      <i class="bx bx-log-out"></i> Logout
+                </a>
+            </div>
+          <?php
+        }
+        else{
+          ?>
+          <a href="/login.php"><img src="/img/bxs-user.svg" alt="LOGIN" style="height: 30px"/></a>
+          <?php
+        }}}
+        ?>
                 <div class="bx bx-menu" id="menu-icon"></div>
 
                 <a href="/logout.php" style="color:black">
@@ -87,7 +114,6 @@ if (!(isset($_SESSION['role']))) {
 
 
         <?php 
-        include '../modelcontroller/model.php';
         $model = new Model();
 
 
